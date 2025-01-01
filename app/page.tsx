@@ -1,113 +1,207 @@
-import Image from "next/image";
+"use client";
+
+import Contact from "@/components/Contact";
+import Hero from "@/components/Hero";
+import ParallaxSection from "@/components/ParallaxSection";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import Skills from "@/components/Skills";
+import Timeline from "@/components/Timeline";
+import {useEffect, useMemo, useRef, useState} from "react";
 
 export default function Home() {
+  const divRef = useRef<HTMLDivElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const mousePositionRef = useRef({x: 0, y: 0}); // 마우스 위치를 저장하는 Ref
+
+  const scrollPosition = useRef(0);
+  const [scrollAlert, setScrollAlert] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollPosition.current = window.scrollY;
+      scrollPosition.current >= 10
+        ? setScrollAlert(true)
+        : setScrollAlert(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      // 마우스 위치 업데이트
+      mousePositionRef.current = {
+        x: event.clientX,
+        y: event.clientY,
+      };
+
+      updateElementPosition();
+    };
+
+    const handleScroll = () => {
+      // 스크롤 이벤트 발생 시 현재 마우스 위치 기반으로 업데이트
+      updateElementPosition();
+    };
+
+    const updateElementPosition = () => {
+      if (elementRef.current) {
+        const offsetX =
+          mousePositionRef.current.x +
+          window.scrollX -
+          elementRef.current.offsetWidth / 2;
+        const offsetY =
+          mousePositionRef.current.y +
+          window.scrollY -
+          elementRef.current.offsetHeight / 2;
+
+        elementRef.current.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      }
+    };
+
+    // 이벤트 리스너 등록
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // 이벤트 리스너 제거
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const dots = useMemo(() => {
+    return [...Array(80)].map(() => ({
+      width: Math.random() * 2 + 1,
+      height: Math.random() * 2 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      animationDuration: Math.random() * 5 + 2,
+      boxShadowBlur: Math.random() * 5 + 1,
+      boxShadowOpacity: Math.random() + 0.5,
+    }));
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className="min-h-screen w-full h-auto flex items-center justify-center flex-col relative overflow-hidden ">
+      <div ref={elementRef} className="follower" />
+      <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#000] via-[#000] to-[#13264eb3] flex items-center justify-center">
+        {/* Particles */}
+        <div className="absolute w-full h-full z-0 pointer-events-none">
+          {dots.map((dot, i) => (
+            <div
+              key={i}
+              className="relative bg-[#2860d7] rounded-full z-0"
+              style={{
+                width: `${dot.width}px`,
+                height: `${dot.height}px`,
+                top: `${dot.top}%`,
+                left: `${dot.left}%`,
+                animation: `float ${dot.animationDuration}s ease-out infinite`,
+                boxShadow: `0 0px ${dot.boxShadowBlur}px ${dot.boxShadowOpacity}px #13264e`,
+              }}
             />
-          </a>
+          ))}
+        </div>
+
+        <div
+          className={`absolute w-full bottom-[0px] left-[20px] text-[#fff] text-center ${
+            !scrollAlert ? "animate-slide-up" : "animate-slide-down"
+          } `}
+        >
+          SCROLL TO TRAVEL
+          <div className="w-full flex justify-center items-center mt-[4px]">
+            <div className=" w-[2px] h-[100px] rounded-full animate-gradient " />
+          </div>
         </div>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* Glass Card */}
+      <section className="relative w-full h-screen flex flex-col justify-start items-start z-10 p-10 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up">
+        <p
+          className="text-[#4667b0] text-[60px] "
+          // style={{
+          //   textShadow: `0 4px 4px #214083`,
+          // }}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          Frontend Developer
+        </p>
+        <h1
+          className="text-[#4667b0] text-[140px] font-bold mb-4 "
+          // style={{
+          //   textShadow: `0 6px 8px #214083`,
+          // }}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          Park DongSeok
+        </h1>
+      </section>
+      {/* <Hero />
+      <Timeline />
+      <Skills />
+      <ProjectShowcase />
+      <Contact />
+      <ParallaxSection /> */}
+      <section className="relative w-auto h-screen flex flex-col justify-center items-center z-10 p-10 rounded-2xl text-center transition-opacity duration-1000 ease-in-out">
+        <h1 className="text-[#eaeaea] text-[70px] font-bold mb-4">HI</h1>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+        @keyframes texts {
+          0% {
+            transform: translateY(0px);
+          }
+          100% {
+            transform: translateY(-20px);
+          }
+        }
+        @keyframes gradient {
+          0% {
+            background: linear-gradient(to top, #13264e, #7d94ad, #13264e);
+            background-size: 100% 200%;
+            background-position: 0% 0%;
+          }
+          50% {
+            background: linear-gradient(to top, #13264e, #7d94ad, #13264e);
+            background-size: 100% 200%;
+            background-position: 0% 100%;
+          }
+          100% {
+            background: linear-gradient(to top, #13264e, #7d94ad, #13264e);
+            background-size: 100% 200%;
+            background-position: 0% 0%;
+          }
+        }
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        .animate-gradient {
+          animation: gradient 3s ease-in-out infinite;
+          background-clip: border-box;
+        }
+
+        .follower {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 40px;
+          height: 40px;
+          background-color: none;
+          border: solid 2px #13264e;
+          border-radius: 100%;
+          pointer-events: none;
+          transition: transform 0.1s ease-out;
+          z-index: 9999;
+        }
+      `}</style>
+    </div>
   );
 }
