@@ -122,6 +122,35 @@
   },
   {
     "title": "ONNURITRAVEL",
+    "intro": "견적상담 신청 및 업체 소개를 위한 관광버스 업체의 홈페이지 입니다.",
+    "period": "2024.06 ~ 2024.07",
+    "frontStacks": ["NextJS", "Tailwind CSS", "react-hook-form"],
+    "backStacks": [
+      "NextJS",
+      "Prisma",
+      "Vercel",
+      "PostgreSQL",
+      "PostGIS",
+      "SENS SMS API",
+      "Naver Open API"
+    ],
+    "imgUrl": "",
+    "url": "https://온누리관광.com",
+    "part": ["Planning", "Design", "Publishing", "Frontend", "Backend"],
+    "task": [
+      {
+        "front": ["모든 페이지의 PC/MO 퍼블리싱을 진행"],
+        "back": [
+          "SQL문을 작성하여 query를 날려서 PostGIS로 전국 휴게소 정보를 공간 인덱싱하여 저장하고, 입력한 위치 기준 반경 300m 이내의 휴게소 데이터 가져와서 Marker 찍음",
+          "클라이언트에서 받아온 주소를 naver geocode api를 사용하여 좌표로 변환",
+          "출발지/경유지/도착지 좌표를 naver map direction15를 사용하여 경로간 좌표를 지도에 polyline 그림 및 경로마다 Marker 찍음"
+        ]
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "IMG UPLOAD",
     "intro": "",
     "period": "",
     "frontStacks": [],
@@ -207,23 +236,6 @@
   },
   {
     "title": "MIND",
-    "intro": "",
-    "period": "",
-    "frontStacks": [],
-    "backStacks": [],
-    "imgUrl": "",
-    "url": "",
-    "part": [],
-    "task": [
-      {
-        "front": [],
-        "back": []
-      }
-    ],
-    "desc": ""
-  },
-  {
-    "title": "IMGUPLOAD",
     "intro": "",
     "period": "",
     "frontStacks": [],
