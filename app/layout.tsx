@@ -1,10 +1,19 @@
 import type {Metadata} from "next";
-import {Inter, Poppins} from "next/font/google";
+import {
+  Inter,
+  Poppins,
+  Roboto_Condensed,
+  Rubik,
+  PT_Sans_Narrow,
+} from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({subsets: ["latin"]});
 const poppins = Poppins({subsets: ["latin"], weight: "400"});
+const roboto = Roboto_Condensed({subsets: ["latin"], weight: "400"});
+const rubik = Rubik({subsets: ["latin"], weight: "400"});
+const cabin = PT_Sans_Narrow({subsets: ["latin"], weight: "400"});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cabin.className}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

@@ -1,0 +1,9 @@
+[
+  {
+    "Language": ["Typescript", "Javascript"],
+    "Framework": ["React", "Next", "Node", "Express"],
+    "MarkUp": ["HTML", "CSS", "Tailwind CSS", "Styled-Components"],
+    "Database": ["Prisma", "MySQL", "PostgreSQL"],
+    "Tool": ["Github", "Figma"]
+  }
+]

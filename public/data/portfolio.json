@@ -1,0 +1,242 @@
+[
+  {
+    "title": "PMS(Project Management System)",
+    "intro": "사내 프로젝트를 관리하는 서비스입니다.",
+    "part": ["Design", "Publishing", "Frontend", "Backend"],
+    "period": "2022.11 ~ 2023.01",
+    "language": "typescript",
+    "frontStacks": [
+      "NextJS",
+      "Tailwind CSS",
+      "Styled-Components",
+      "ChartJS",
+      "swr"
+    ],
+    "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
+    "imgUrl": "",
+    "url": "https://github.com/Flatcebo/pms",
+    "task": [
+      {
+        "front": [
+          "모든 페이지의 디자인과 퍼블리싱을 진행",
+          "회원가입/로그인 기능 구현",
+          "프로젝트 등록 기능 구현",
+          "ChartJS를 사용해서 프로젝트 진행도 노출"
+        ],
+        "back": ["Prisma Setting", "Prisma Data Modeling", "프로젝트 CRUD 구현"]
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "어복톡",
+    "intro": "사내 플랫폼들과 연동하고, 낚시인들을 시작으로 그 외의 이용자들까지 사용하기 위한 채팅 앱 입니다.",
+    "language": "typescript",
+    "part": ["Planning", "Frontend", "Backend"],
+    "period": "2023.02 ~ 2023.07",
+    "frontStacks": ["React-Native"],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "task": [
+      {
+        "front": ["모든 스크린 퍼블리싱을 진행"],
+        "back": ["ERD 설계"]
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "Scraper",
+    "intro": "낚시배 운영중이신 선주, 선장님들의 데이터를 추출합니다.",
+    "language": "typescript",
+    "part": ["Planning", "Frontend", "Backend"],
+    "period": "2023.08 ~ 2023.09",
+    "frontStacks": ["NextJS", "swr", "react-hook-form", "cheerio"],
+    "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
+    "imgUrl": "",
+    "url": "https://github.com/Flatcebo/crawler-server",
+    "task": [
+      {
+        "front": [
+          "자동 페이지를 이동하여 HTML의 class/id 등을 분석하며 cheerio로 Target Data 추출",
+          "추출한 데이터 excel 다운로드 구현"
+        ],
+        "back": [
+          "Prisma Setting",
+          "Prisma Data Modeling",
+          "REST API 구현",
+          "선주, 선장 정보 Create, Delete 구현"
+        ]
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "SIPPIN",
+    "intro": "술집 정보를 제공하며 실시간으로 예약할 수 있는 앱 입니다.",
+    "period": "2023.12 ~ 2024.02",
+    "frontStacks": ["React-Native"],
+    "backStacks": ["Firebase"],
+    "imgUrl": "",
+    "url": "https://github.com/Flatcebo/Sippin",
+    "part": ["Planning", "Design", "Frontend", "Backend"],
+    "task": [
+      {
+        "front": [
+          "화면 설계",
+          "모든 스크린 퍼블리싱을 진행",
+          "회원가입/로그인 기능 구현",
+          "최신/추천, 지역/주종 필터링 구현",
+          "좌표 데이터에 맞게 Marker 찍기 및 커스텀",
+          "지도 내의 업체 슬라이더 동작시 해당 업체의 마커로 이동하는 기능 구현"
+        ],
+        "back": ["ERD 설계"]
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "HORIZON",
+    "intro": "동영상이 화면에 가득차는 반응형 기업 홈페이지 입니다.",
+    "period": "2024.03 ~ 2024.03",
+    "frontStacks": ["ReactJS", "EmailJS", "react-hook-form", "Tailwind CSS"],
+    "backStacks": ["Firebase"],
+    "imgUrl": "",
+    "url": "https://horizon-z.com",
+    "part": ["Publishing", "Frontend", "Backend"],
+    "task": [
+      {
+        "front": [
+          "모든 페이지의 PC/MO 퍼블리싱을 진행",
+          "유튜브 동영상을 화면에 가득차게 작업",
+          "크로스 브라우징",
+          "뮤직 플레이어 기능 구현",
+          "이메일을 입력하면 회사 소개서가 발송되게 작업",
+          "미팅 스케줄을 잡기위해 Calendly 연동"
+        ],
+        "back": []
+      }
+    ],
+    "desc": "동영상과 디바이스의 화면 비율이 맞지 않아 영상이 가득차지 않고, 빈공간이 생기는 문제가 발생해서 영상 플레이어의 크기를 늘리고 디바이스 화면의 가운데에 위치하게 작업했습니다."
+  },
+  {
+    "title": "ONNURITRAVEL",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "ONNURITOUR",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "KCREDIT",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "LAW",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "COIN",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "MIND",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  },
+  {
+    "title": "IMGUPLOAD",
+    "intro": "",
+    "period": "",
+    "frontStacks": [],
+    "backStacks": [],
+    "imgUrl": "",
+    "url": "",
+    "part": [],
+    "task": [
+      {
+        "front": [],
+        "back": []
+      }
+    ],
+    "desc": ""
+  }
+]

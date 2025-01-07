@@ -1,0 +1,113 @@
+// "use client";
+
+// import {useEffect, useRef} from "react";
+
+// interface IBgProps {
+//   scrollAlert: boolean;
+// }
+
+// interface Dot {
+//   x: number;
+//   y: number;
+//   dx: number;
+//   dy: number;
+//   size: number;
+//   blur: number;
+//   opacity: number;
+//   shadow: number;
+//   angle?: number; // 곡선 이동을 위한 각도
+//   angularVelocity?: number; // 각도의 변화 속도
+// }
+
+// export default function Background({scrollAlert}: IBgProps) {
+//   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+//   useEffect(() => {
+//     const canvas = canvasRef.current;
+//     if (!canvas) return;
+
+//     const ctx = canvas.getContext("2d");
+//     if (!ctx) return;
+
+//     const dots: Dot[] = [...Array(80)].map(() => ({
+//       x: Math.random() * canvas.width,
+//       y: Math.random() * canvas.height,
+//       dx: Math.random() - 0.8,
+//       dy: Math.random() - 0.8,
+//       size: Math.random() * 1.4 + 1,
+//       blur: Math.random() * 2 + 1,
+//       opacity: Math.random() * 0.8,
+//       shadow: Math.random(),
+//       // angle: Math.random() * Math.PI * 1,
+//       // angularVelocity: Math.random() * 0.05,
+//     }));
+
+//     const updateDots = () => {
+//       if (!ctx) return;
+
+//       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+//       dots.forEach((dot) => {
+//         // dot.angle += dot.angularVelocity;
+//         // dot.x += dot.dx + Math.cos(dot.angle);
+//         // dot.y += dot.dy + Math.sin(dot.angle);
+
+//         dot.x += dot.dx;
+//         dot.y += dot.dy;
+//         // Boundary check and bounce
+//         if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+//         if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+
+//         ctx.beginPath();
+//         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+
+//         ctx.fillStyle = `rgba(40, 96, 215, ${dot.opacity})`;
+//         ctx.shadowBlur = dot.blur;
+//         ctx.shadowColor = `rgba(19, 38, 78, ${dot.shadow})`;
+
+//         const spreadFactor = 50; // Adjust this for the "spread" effect
+//         ctx.shadowOffsetX = 5;
+//         ctx.shadowOffsetY = 5;
+
+//         ctx.fill();
+//         ctx.closePath();
+//       });
+
+//       requestAnimationFrame(updateDots);
+//     };
+
+//     // Set canvas size
+//     const resizeCanvas = () => {
+//       canvas.width = window.innerWidth;
+//       canvas.height = window.innerHeight;
+//     };
+
+//     resizeCanvas();
+//     window.addEventListener("resize", resizeCanvas);
+
+//     updateDots();
+
+//     return () => {
+//       window.removeEventListener("resize", resizeCanvas);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#000] via-[#000] to-[#13264eb3] flex items-center justify-center z-0">
+//       <canvas
+//         ref={canvasRef}
+//         className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none "
+//       />
+//       <div
+//         className={`absolute w-full bottom-[0px] left-[20px] text-[#e5e5e5] font-bold text-center select-none ${
+//           !scrollAlert ? "animate-slide-up" : "animate-slide-down"
+//         }`}
+//       >
+//         SCROLL TO TRAVEL
+//         <div className="w-full flex justify-center items-center mt-[4px]">
+//           <div className=" w-[2px] h-[100px] rounded-full animate-gradient" />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
