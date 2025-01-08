@@ -7,12 +7,16 @@ import Follower from "@/components/Follower";
 import Hero from "@/components/Hero";
 import ParallaxSection from "@/components/ParallaxSection";
 import ProjectShowcase from "@/components/ProjectShowcase";
-import SectionHero from "@/components/SectionHero";
+import SectionHero from "@/pages/SectionHero";
 import SideNav from "@/components/SideNav";
 import Skills from "@/components/Skills";
 import ThemeButton from "@/components/ThemeButton";
 import Timeline from "@/components/Timeline";
 import {useEffect, useRef, useState} from "react";
+import SectionCareer from "@/pages/SectionCareer";
+import SectionSkills from "@/pages/SectionSkills";
+import SectionPortfolio from "@/pages/SectionPortfolio";
+import SectionStudy from "@/pages/SectionStudy";
 
 export default function Home() {
   const scrollPosition = useRef(0);
@@ -78,25 +82,26 @@ export default function Home() {
 
       <SectionHero />
 
-      {/* <Hero />
-      <Timeline />
-      <Skills />
-      <ProjectShowcase />
-      <Contact />
-      <ParallaxSection /> */}
+      <SectionCareer />
 
-      <section
-        id="career"
-        className="relative w-auto h-screen flex flex-col justify-center items-center z-10 p-10 rounded-2xl text-center transition-opacity duration-1000 ease-in-out"
-      >
-        <h1 className="text-[#e5e5e5] text-[70px] font-bold mb-4">CAREER</h1>
-      </section>
-      <section
+      <SectionSkills />
+
+      <SectionPortfolio />
+
+      <SectionStudy />
+
+      {/* <Hero /> */}
+      {/* <Timeline /> */}
+      {/* <Skills /> */}
+      {/* <ProjectShowcase /> */}
+      {/* <Contact /> */}
+      {/* <ParallaxSection /> */}
+      {/* <section
         id="skills"
         className="relative w-auto h-screen flex flex-col justify-center items-center z-10 p-10 rounded-2xl text-center transition-opacity duration-1000 ease-in-out"
       >
         <h1 className="text-[#e5e5e5] text-[70px] font-bold mb-4">SKILLS</h1>
-      </section>
+      </section> */}
     </div>
   );
 }
