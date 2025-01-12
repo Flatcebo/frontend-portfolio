@@ -69,7 +69,7 @@ export default function Home() {
   // console.log(view);
 
   return (
-    <div className="min-h-screen w-full h-auto flex items-center justify-center flex-col relative overflow-hidden">
+    <div className="w-full h-auto flex items-center justify-center flex-col relative overflow-hidden">
       <Follower />
 
       <Background scrollAlert={scrollAlert} />
