@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
+    "@tanstack/react-query": "^5.64.1",
+    "@tanstack/react-query-devtools": "^5.64.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "typescript": "^5",

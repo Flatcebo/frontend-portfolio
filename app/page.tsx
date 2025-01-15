@@ -57,7 +57,7 @@ export default function Home() {
           sectionPositions[i].top - screenHeight / 2
         ) {
           setView(sections[i].name);
-          break;
+          return;
         }
       }
     };
