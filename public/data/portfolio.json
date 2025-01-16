@@ -14,7 +14,8 @@
     ],
     "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
     "imgUrl": "",
-    "url": "https://github.com/Flatcebo/pms",
+    "gitUrl": "https://github.com/Flatcebo/pms",
+    "url": "",
     "task": [
       {
         "front": [
@@ -37,6 +38,7 @@
     "frontStacks": ["React-Native"],
     "backStacks": [],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "task": [
       {
@@ -55,7 +57,8 @@
     "frontStacks": ["NextJS", "swr", "react-hook-form", "cheerio"],
     "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
     "imgUrl": "",
-    "url": "https://github.com/Flatcebo/crawler-server",
+    "gitUrl": "https://github.com/Flatcebo/crawler-server",
+    "url": "",
     "task": [
       {
         "front": [
@@ -79,7 +82,8 @@
     "frontStacks": ["React-Native"],
     "backStacks": ["Firebase"],
     "imgUrl": "",
-    "url": "https://github.com/Flatcebo/Sippin",
+    "gitUrl": "https://github.com/Flatcebo/Sippin",
+    "url": "",
     "part": ["Planning", "Design", "Frontend", "Backend"],
     "task": [
       {
@@ -103,6 +107,7 @@
     "frontStacks": ["ReactJS", "EmailJS", "react-hook-form", "Tailwind CSS"],
     "backStacks": ["Firebase"],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "https://horizon-z.com",
     "part": ["Publishing", "Frontend", "Backend"],
     "task": [
@@ -135,6 +140,7 @@
       "Naver Open API"
     ],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "https://온누리관광.com",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -166,6 +172,7 @@
     "frontStacks": ["React-Native", "ReactJS", "Tailwind CSS"],
     "backStacks": ["Firebase"],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -198,6 +205,7 @@
     "frontStacks": ["Design", "Publishing", "Frontend", "Backend"],
     "backStacks": ["NextJS", "Prisma", "Vercel", "PostgreSQL", "SENS SMS API"],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "https://온누리투어.com",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -223,6 +231,7 @@
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "part": [],
     "task": [
@@ -240,6 +249,7 @@
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "part": [],
     "task": [
@@ -257,6 +267,7 @@
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "part": [],
     "task": [
@@ -274,6 +285,7 @@
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
+    "gitUrl": "",
     "url": "",
     "part": [],
     "task": [

@@ -7,13 +7,13 @@ import {useEffect, useState} from "react";
 interface DropdownProps {
   visible: boolean;
   onClose: () => void;
-  setSelectTitle: (item: string) => void;
+  setSelectedItem: (title: SkillItem) => void;
 }
 
 export default function Dropdown({
   visible,
   onClose,
-  setSelectTitle,
+  setSelectedItem,
 }: DropdownProps) {
   const [data, setData] = useState<SkillItem[]>([]);
 
@@ -39,21 +39,27 @@ export default function Dropdown({
   //     };
   //   }, [visible, onClose]);
 
-  const handleChangeItem = (title: string) => {
+  const handleChangeItem = (item: SkillItem) => {
     // console.log(title);
-    setSelectTitle(title);
+    setSelectedItem(item);
     onClose();
   };
 
   //   console.log(selectedTitle);
 
   return visible ? (
-    <div className="absolute top-[50px] w-[60px] h-[auto] flex flex-col items-center ">
+    <div className="absolute top-[60px] right-0 w-[60px] h-[auto] flex flex-col items-center z-[98]">
+      <button
+        onClick={() => handleChangeItem({title: "ALL", imgUrl: ""})}
+        className="w-[32px] h-[32px] flex justify-center items-center mb-[10px] text-[16px] text-center rounded-full border-[3px] z-[99]"
+      >
+        ALL
+      </button>
       {data.map((i, idx) => {
         return (
           <button
             key={idx}
-            onClick={() => handleChangeItem(i.title)}
+            onClick={() => handleChangeItem(i)}
             className="w-[32px] h-[32px] bg-[white] rounded-full flex justify-center items-center mb-[10px] z-[99]"
           >
             <Image

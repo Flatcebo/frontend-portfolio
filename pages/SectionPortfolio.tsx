@@ -4,39 +4,46 @@ import Dropdown from "@/components/Dropdown";
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import {IoIosArrowDown} from "react-icons/io";
+import pfData from "@/public/data/portfolio.json";
+import WebView from "@/components/WebView";
+import Header from "@/components/Header";
+import Slick from "@/components/Slick";
 
 export default function SectionPortfolio() {
-  const [rotateAngle, setRotateAngle] = useState(0);
+  const [data, setData] = useState<PfCategory[]>([]);
   const [dropdown, setDropdown] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("ALL");
+  const [webView, setWebView] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<SkillItem>({
+    title: "ALL",
+    imgUrl: "",
+  });
+  const [selectedIdx, setSelectedIdx] = useState(0);
+  const [selectedUrl, setSelectedUrl] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const sectionStart = 500;
-      const sectionEnd = 1000;
-
-      // 스크롤 위치가 2번째 섹션 범위에 있을 때만 회전값 계산
-      if (scrollPosition >= sectionStart && scrollPosition <= sectionEnd) {
-        const progress =
-          (scrollPosition - sectionStart) / (sectionEnd - sectionStart); // 0 ~ 1 비율
-        setRotateAngle(progress * 360); // 0도 ~ 360도
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    setData(pfData as PfCategory[]);
   }, []);
+
+  useEffect(() => {
+    const selectedUrl = data.find((item, idx) => idx === selectedIdx)?.url;
+    setSelectedUrl(selectedUrl as any);
+  }, [selectedIdx]);
 
   const handleDropdown = () => {
     setDropdown((any) => !any);
   };
 
-  // console.log(title);
+  const handleClickPortfolio = (idx: number, url: string) => {
+    setSelectedIdx(idx);
+    setSelectedUrl(url);
+  };
+
+  // console.log(selectedUrl);
+
   return (
     <section
       id="portfolio"
-      className="relative w-full h-screen flex justify-center items-center z-[998] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
+      className="relative w-full h-screen z-[996] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
     >
       {/* {dropdown && (
         <button
@@ -45,55 +52,86 @@ export default function SectionPortfolio() {
         />
       )} */}
 
-      <div className="relative w-full h-auto flex flex-col justify-center items-center gap-[0px]">
-        <h2 className="text-[48px] w-auto font-bold text-center mb-10 leading-[40px]">
-          PORTFOLIO
-        </h2>
+      <Header title="PORTFOLIO" />
 
-        <div className="relative w-[700px] h-[60px] flex justify-end items-center text-left">
-          <button
-            onClick={handleDropdown}
-            className="flex items-center gap-[4px]"
-          >
-            <div className="w-[32px] h-[32px] bg-[white] rounded-full flex justify-center items-center ">
-              <Image
-                src={`/images/skills/nextjs_rounded.svg`}
-                alt="PROJECT"
-                width={4000}
-                height={4000}
-                className="w-[28px] h-[28px] rounded-full bg-[white]"
-              />
+      <div className="relative w-full h-full flex flex-col justify-start items-center gap-[0px]">
+        {/* <Image
+          src={`/images/portfolio/test.png`}
+          alt="PROJECT"
+          width={4000}
+          height={4000}
+          className="absolute w-[full] h-[screen] rounded-[10px]"
+          // className="w-[400px] h-[225px] rounded-[10px]"
+        /> */}
+        <div className="relative w-[1000px] h-[600px]">
+          <WebView url={selectedUrl} />
+
+          <div className="relative w-full h-[60px] flex justify-between items-center text-left">
+            <div className="flex justify-center items-center gap-[10px] ml-1">
+              {data.map((i, idx) => {
+                // console.log(i.url);
+                return (
+                  <button
+                    onClick={() => handleClickPortfolio(idx, i.url)}
+                    className={`${
+                      idx === selectedIdx &&
+                      "border-[1px] border-[#cacaca] rounded-[4px]"
+                    } px-[1px] `}
+                  >
+                    {/* <Image
+                      src={`/images/portfolio/test.png`}
+                      alt={i.title}
+                      width={4000}
+                      height={4000}
+                      className="w-[57px] h-[32px] rounded-[4px] object-fill"
+                    /> */}
+                    {i.url ? (
+                      <iframe
+                        src={i.url}
+                        // alt={i.title}
+                        width={4000}
+                        height={4000}
+                        allow="fullscreen"
+                        draggable={false}
+                        className="w-[57px] h-[32px] rounded-[4px] object-fill pointer-events-none"
+                      />
+                    ) : (
+                      <div
+                        className={`w-[57px] h-[32px] rounded-[4px] content-center bg-[#ffffff15]`}
+                      >
+                        <p className="text-[8px] font-bold">😢</p>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
-            {title === "ALL" && <span className="text-[18px]">{title}</span>}
 
-            <IoIosArrowDown color="#fff" size={24} />
-          </button>
+            <button
+              onClick={handleDropdown}
+              className="flex items-center gap-[4px]"
+            >
+              <span className="text-[18px]">{selectedItem.title}</span>
 
-          <Dropdown
-            visible={dropdown}
-            onClose={() => setDropdown(false)}
-            setSelectTitle={(i) => setTitle(i)}
-          />
-        </div>
+              <IoIosArrowDown color="#fff" size={24} />
+            </button>
 
-        <div className="relative w-[700px] h-[600px] flex flex-col gap-[10px]">
-          <div className="flex">
-            <Image
-              src={`/images/skills/mariadb.png`}
-              alt="PROJECT"
-              width={4000}
-              height={4000}
-              className="w-[200px] h-[200px]"
+            <Dropdown
+              visible={dropdown}
+              onClose={() => setDropdown(false)}
+              setSelectedItem={(item) =>
+                setSelectedItem({title: item.title, imgUrl: item.imgUrl})
+              }
             />
+          </div>
 
-            <div className="text-[white] w-[500px] px-[40px] text-left flex flex-col gap-[40px]">
-              <h4 className="text-[28px] font-bold">PROJECT TITLE</h4>
-
-              <div className="text-[18px] break-words tracking-[0.6px]">
-                설명입니다 설명입니다설명입니다 설명입니다설명입니다
-                설명입니다설명입니다 설명입니다설명입니다 설명입니다
-              </div>
-            </div>
+          <div className="w-full h-[170px] flex flex-col bg-[] p-0 gap-[0px] mb-[0px]">
+            <Slick
+              data={data}
+              setCount={(count) => setSelectedIdx(count)}
+              // setSelectedUrl={(url) => setSelectedUrl(url)}
+              selectedIdx={selectedIdx}
+            />
           </div>
         </div>
       </div>

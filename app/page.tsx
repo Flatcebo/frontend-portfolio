@@ -17,6 +17,8 @@ import SectionCareer from "@/pages/SectionCareer";
 import SectionSkills from "@/pages/SectionSkills";
 import SectionPortfolio from "@/pages/SectionPortfolio";
 import SectionStudy from "@/pages/SectionStudy";
+import WebView from "@/components/WebView";
+import Header from "@/components/Header";
 
 export default function Home() {
   const scrollPosition = useRef(0);
@@ -69,7 +71,7 @@ export default function Home() {
   // console.log(view);
 
   return (
-    <div className="w-full h-auto flex items-center justify-center flex-col relative overflow-hidden">
+    <div className="w-full h-auto relative overflow-visible">
       <Follower />
 
       <Background scrollAlert={scrollAlert} />

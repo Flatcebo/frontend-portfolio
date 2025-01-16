@@ -4,7 +4,7 @@ export default function SectionHero() {
   return (
     <section
       id="hero"
-      className="relative w-full h-screen flex flex-col justify-start items-start z-[998] p-10 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up
+      className="relative w-full h-screen flex flex-col justify-start items-start z-[996] p-10 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up
                     leading-[90px] tracking-[0px]"
     >
       <div className="">

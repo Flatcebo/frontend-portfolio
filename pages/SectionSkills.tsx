@@ -5,6 +5,7 @@ import skills from "@/public/data/skills.json";
 import Image from "next/image";
 import Bubble from "@/components/Bubble";
 import {FaStar} from "react-icons/fa";
+import Header from "@/components/Header";
 
 export default function SectionSkills() {
   const skillData: SkillCategory[] = skills;
@@ -20,16 +21,14 @@ export default function SectionSkills() {
   return (
     <section
       id="skills"
-      className="relative w-full h-screen flex justify-center items-center z-[998] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
+      className="relative w-full h-screen z-[996] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
     >
-      <div className="relative w-full h-auto flex flex-col justify-center items-center gap-[60px]">
-        <h2 className="text-[48px] w-auto font-bold text-center mb-10 leading-[40px]">
-          SKILLS
-        </h2>
+      <Header title="SKILLS" />
 
+      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pb-[120px]">
         {/* <Bubble categories={categories} skillData={skillData} /> */}
 
-        <div className="relative w-[900px] py-0 flex justify-start items-start gap-[0px]">
+        <div className="relative w-[900px] py-0 flex justify-center items-center gap-[0px]">
           {skillData.map((skill, index) => (
             <div key={index} className="ml-0 flex flex-col gap-[40px]">
               {categories.map((category) => (

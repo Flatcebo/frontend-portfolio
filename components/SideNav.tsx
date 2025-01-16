@@ -15,7 +15,7 @@ export default function SideNav({view}: INavProps) {
   };
 
   return (
-    <div className="fixed top-1/2 right-6 w-[65px] transform -translate-y-1/2 z-[999] ">
+    <div className="fixed top-1/2 right-6 w-[65px] transform -translate-y-1/2 z-[997] ">
       <ul className="flex flex-col gap-[40px] text-[#e5e5e5] animate-slide-up">
         {sections.map((section) => (
           <li
