@@ -1,17 +1,13 @@
 "use client";
 
 import Background from "@/components/Background";
-import Contact from "@/components/Contact";
 import FlowBar from "@/components/FlowBar";
 import Follower from "@/components/Follower";
-import Hero from "@/components/Hero";
 import ParallaxSection from "@/components/ParallaxSection";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import SectionHero from "@/pages/SectionHero";
 import SideNav from "@/components/SideNav";
-import Skills from "@/components/Skills";
 import ThemeButton from "@/components/ThemeButton";
-import Timeline from "@/components/Timeline";
 import {useEffect, useRef, useState} from "react";
 import SectionCareer from "@/pages/SectionCareer";
 import SectionSkills from "@/pages/SectionSkills";
@@ -49,10 +45,8 @@ export default function Home() {
       scrollPosition.current = window.scrollY;
       const screenHeight = window.innerHeight;
 
-      // 스크롤 경고 상태 업데이트
       setScrollAlert(scrollPosition.current >= 10);
 
-      // 현재 위치와 가장 가까운 섹션 찾기
       for (let i = sectionPositions.length - 1; i >= 0; i--) {
         if (
           scrollPosition.current >=
@@ -92,11 +86,7 @@ export default function Home() {
 
       <SectionStudy />
 
-      {/* <Hero /> */}
-      {/* <Timeline /> */}
-      {/* <Skills /> */}
       {/* <ProjectShowcase /> */}
-      {/* <Contact /> */}
       {/* <ParallaxSection /> */}
       {/* <section
         id="skills"

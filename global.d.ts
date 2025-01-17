@@ -19,19 +19,29 @@ interface SkillProps {
   categories: CategoryKey[];
 }
 
+type PfCategoryKey =
+  | "part"
+  | "period"
+  | "language"
+  | "frontStacks"
+  | "backStacks"
+  | "url"
+  | "gitUrl"
+  | "desc";
+
 interface PfCategory {
   title: string;
   intro: string;
   part: string[];
-  period: string;
-  language: string;
+  period: string[];
+  language: string[];
   frontStacks: string[];
   backStacks: string[];
   imgUrl: string;
   url: string;
-  gitUrl: string;
+  gitUrl: string[];
   task: PfTask[];
-  desc: string;
+  desc: string[];
 }
 
 interface PfTask {

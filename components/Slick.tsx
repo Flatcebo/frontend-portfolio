@@ -12,9 +12,15 @@ interface SlickProps {
   data: PfCategory[];
   setCount: (count: number) => void;
   selectedIdx: number;
+  handleOpenDetail: () => void;
 }
 
-export default function Slick({data, setCount, selectedIdx}: SlickProps) {
+export default function Slick({
+  data,
+  setCount,
+  selectedIdx,
+  handleOpenDetail,
+}: SlickProps) {
   // const params = useSearchParams();
   // const titleParam = params?.get("title") || "45";
   // const typeParam = params?.get("type") || "대형";
@@ -107,22 +113,34 @@ export default function Slick({data, setCount, selectedIdx}: SlickProps) {
           // console.log(i.url, idx);
           return (
             <div key={idx} className="!flex mx-[6px] my-[4px]">
-              <Image
-                src={`/images/portfolio/test.png`}
-                alt={i.title}
-                width={4000}
-                height={4000}
-                draggable={false}
-                loader={imgLoad}
-                // className=" w-[full] h-[screen] rounded-[10px]"
-                className="w-[300px] h-[169px] rounded-[10px] shadow-div"
-              />
-              <div className="text-[white] px-[30px] text-left flex flex-col gap-[30px]">
-                <h4 className="text-[28px] font-bold">{i.title}</h4>
+              {i.imgUrl ? (
+                <Image
+                  src={i.imgUrl}
+                  alt={i.title}
+                  width={4000}
+                  height={4000}
+                  className="w-[300px] h-[169px] rounded-[4px] object-fill shadow-div"
+                />
+              ) : (
+                <div
+                  className={`w-[300px] h-[169px] rounded-[4px] content-center bg-[#ffffff15] shadow-div`}
+                >
+                  <p className="text-[8px] font-bold">😢</p>
+                </div>
+              )}
+              <div className="w-[700px] text-[white] px-[30px] text-left flex flex-col gap-[4px]">
+                <h4 className="text-[20px] font-bold">{i.title}</h4>
 
-                <div className="text-[18px] break-words tracking-[0.6px]">
-                  설명입니다 설명입니다설명입니다 설명입니다설명입니다
-                  설명입니다설명입니다 설명입니다설명입니다 설명입니다
+                <div className="w-full h-full flex flex-col justify-between">
+                  <div className="text-[14px] break-words tracking-[0.6px]">
+                    {i.intro}
+                  </div>
+                  <button
+                    onClick={handleOpenDetail}
+                    className="bg-[#ffffff15] text-center py-[10px] rounded-[2px] hover:bg-[#ffffff40]"
+                  >
+                    DETAIL
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,10 +1,10 @@
 [
   {
-    "title": "PMS(Project Management System)",
-    "intro": "사내 프로젝트를 관리하는 서비스입니다.",
+    "title": ["PMS(Project Management System)"],
+    "intro": ["사내 프로젝트를 관리하는 서비스입니다."],
     "part": ["Design", "Publishing", "Frontend", "Backend"],
-    "period": "2022.11 ~ 2023.01",
-    "language": "typescript",
+    "period": ["2022.11 ~ 2023.01"],
+    "language": ["typescript"],
     "frontStacks": [
       "NextJS",
       "Tailwind CSS",
@@ -14,7 +14,7 @@
     ],
     "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
     "imgUrl": "",
-    "gitUrl": "https://github.com/Flatcebo/pms",
+    "gitUrl": ["https://github.com/Flatcebo/pms"],
     "url": "",
     "task": [
       {
@@ -27,18 +27,18 @@
         "back": ["Prisma Setting", "Prisma Data Modeling", "프로젝트 CRUD 구현"]
       }
     ],
-    "desc": ""
+    "desc": [[""]]
   },
   {
     "title": "어복톡",
     "intro": "사내 플랫폼들과 연동하고, 낚시인들을 시작으로 그 외의 이용자들까지 사용하기 위한 채팅 앱 입니다.",
-    "language": "typescript",
+    "language": ["typescript"],
     "part": ["Planning", "Frontend", "Backend"],
-    "period": "2023.02 ~ 2023.07",
+    "period": ["2023.02 ~ 2023.07"],
     "frontStacks": ["React-Native"],
     "backStacks": [],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "task": [
       {
@@ -46,18 +46,18 @@
         "back": ["ERD 설계"]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "Scraper",
     "intro": "낚시배 운영중이신 선주, 선장님들의 데이터를 추출합니다.",
-    "language": "typescript",
+    "language": ["typescript"],
     "part": ["Planning", "Frontend", "Backend"],
-    "period": "2023.08 ~ 2023.09",
+    "period": ["2023.08 ~ 2023.09"],
     "frontStacks": ["NextJS", "swr", "react-hook-form", "cheerio"],
     "backStacks": ["NextJS", "Prisma", "MySQL", "MariaDB"],
     "imgUrl": "",
-    "gitUrl": "https://github.com/Flatcebo/crawler-server",
+    "gitUrl": ["https://github.com/Flatcebo/crawler-server"],
     "url": "",
     "task": [
       {
@@ -73,16 +73,17 @@
         ]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "SIPPIN",
     "intro": "술집 정보를 제공하며 실시간으로 예약할 수 있는 앱 입니다.",
-    "period": "2023.12 ~ 2024.02",
+    "period": ["2023.12 ~ 2024.02"],
+    "language": ["typescript"],
     "frontStacks": ["React-Native"],
     "backStacks": ["Firebase"],
     "imgUrl": "",
-    "gitUrl": "https://github.com/Flatcebo/Sippin",
+    "gitUrl": ["https://github.com/Flatcebo/Sippin"],
     "url": "",
     "part": ["Planning", "Design", "Frontend", "Backend"],
     "task": [
@@ -98,16 +99,17 @@
         "back": ["ERD 설계"]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "HORIZON",
-    "intro": "동영상이 화면에 가득차는 반응형 기업 홈페이지 입니다.",
-    "period": "2024.03 ~ 2024.03",
+    "intro": "동영상이 화면에 가득차는 반응형 홈페이지 입니다.",
+    "period": ["2024.03 ~ 2024.03"],
+    "language": ["typescript"],
     "frontStacks": ["ReactJS", "EmailJS", "react-hook-form", "Tailwind CSS"],
     "backStacks": ["Firebase"],
-    "imgUrl": "",
-    "gitUrl": "",
+    "imgUrl": "/images/portfolio/horizon.png",
+    "gitUrl": [""],
     "url": "https://horizon-z.com",
     "part": ["Publishing", "Frontend", "Backend"],
     "task": [
@@ -126,9 +128,10 @@
     "desc": "동영상과 디바이스의 화면 비율이 맞지 않아 영상이 가득차지 않고, 빈공간이 생기는 문제가 발생해서 영상 플레이어의 크기를 늘리고 디바이스 화면의 가운데에 위치하게 작업했습니다."
   },
   {
-    "title": "온누리관광/관리자 웹",
+    "title": "온누리관광 / 관리자 웹",
     "intro": "견적상담 신청 및 업체 소개를 위한 관광버스 업체의 홈페이지 입니다.",
-    "period": "2024.06 ~ 2024.07",
+    "period": ["2024.06 ~ 2024.07"],
+    "language": ["typescript"],
     "frontStacks": ["NextJS", "Tailwind CSS", "react-hook-form"],
     "backStacks": [
       "NextJS",
@@ -139,8 +142,8 @@
       "SENS SMS API",
       "Naver Open API"
     ],
-    "imgUrl": "",
-    "gitUrl": "",
+    "imgUrl": "/images/portfolio/onnuri.png",
+    "gitUrl": [""],
     "url": "https://온누리관광.com",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -163,16 +166,17 @@
         ]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
-    "title": "이미지 업로드 앱/관리자 웹",
+    "title": "이미지 업로드 앱 / 관리자 웹",
     "intro": "작업자가 인테리어 하자의 사진을 어플 내에 등록하여 업로드하고, 사무 직원이 확인하고 승인 할 수 있으며 해당 하자 내용과 이미지를 docx 파일로 다운로드 가능한 웹/앱 입니다.",
-    "period": "2024.06 ~ 2024.08",
+    "period": ["2024.06 ~ 2024.08"],
+    "language": ["typescript"],
     "frontStacks": ["React-Native", "ReactJS", "Tailwind CSS"],
     "backStacks": ["Firebase"],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -196,16 +200,17 @@
         ]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
-    "title": "온누리투어/관리자 웹",
+    "title": "온누리투어 / 관리자 웹",
     "intro": "견적상담 신청 및 업체 소개를 위한 관광버스 업체의 홈페이지 입니다.",
-    "period": "2024.10 ~ 2024.10",
+    "period": ["2024.10 ~ 2024.10"],
+    "language": ["typescript"],
     "frontStacks": ["Design", "Publishing", "Frontend", "Backend"],
     "backStacks": ["NextJS", "Prisma", "Vercel", "PostgreSQL", "SENS SMS API"],
-    "imgUrl": "",
-    "gitUrl": "",
+    "imgUrl": "/images/portfolio/onnuritour.png",
+    "gitUrl": [""],
     "url": "https://온누리투어.com",
     "part": ["Design", "Publishing", "Frontend", "Backend"],
     "task": [
@@ -222,16 +227,17 @@
         ]
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "KCREDIT",
-    "intro": "",
-    "period": "",
+    "intro": [""],
+    "period": [""],
+    "language": ["typescript"],
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "part": [],
     "task": [
@@ -240,16 +246,17 @@
         "back": []
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "LAW",
-    "intro": "",
-    "period": "",
+    "intro": [""],
+    "period": [""],
+    "language": ["typescript"],
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "part": [],
     "task": [
@@ -258,16 +265,17 @@
         "back": []
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "COIN",
-    "intro": "",
-    "period": "",
+    "intro": [""],
+    "period": [""],
+    "language": ["typescript"],
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "part": [],
     "task": [
@@ -276,16 +284,17 @@
         "back": []
       }
     ],
-    "desc": ""
+    "desc": [""]
   },
   {
     "title": "MIND",
-    "intro": "",
-    "period": "",
+    "intro": [""],
+    "period": [""],
+    "language": "typescript",
     "frontStacks": [],
     "backStacks": [],
     "imgUrl": "",
-    "gitUrl": "",
+    "gitUrl": [""],
     "url": "",
     "part": [],
     "task": [
@@ -294,6 +303,6 @@
         "back": []
       }
     ],
-    "desc": ""
+    "desc": [""]
   }
 ]
