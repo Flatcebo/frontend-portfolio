@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Image, {ImageLoaderProps} from "next/image";
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
-import {imgLoader} from "@/app/utils/imgLoader";
+import {imgLoader} from "@/utils/imgLoader";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
+import Link from "next/link";
 
 interface SlickProps {
   data: PfCategory[];
@@ -21,11 +22,6 @@ export default function Slick({
   selectedIdx,
   handleOpenDetail,
 }: SlickProps) {
-  // const params = useSearchParams();
-  // const titleParam = params?.get("title") || "45";
-  // const typeParam = params?.get("type") || "대형";
-  // const router = useRouter();
-  // const [data, setData] = useState<any[]>([]);
   const [side, setSide] = useState(false);
   const [inSeat, setInSeat] = useState(false);
   const sliderRef = useRef<Slider>(null);
@@ -37,20 +33,12 @@ export default function Slick({
     width <= 1200 ? setSide(true) : setSide(false);
   }, []);
 
-  // useEffect(() => {
-  //   setCount(selectedIdx);
-  // }, []);
-
   useEffect(() => {
     setCount(selectedIdx);
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(selectedIdx);
     }
   }, [selectedIdx]);
-
-  // useEffect(() => {
-
-  // },[setCount])
 
   function PrevArrow({className, style, onClick}: any) {
     return (
@@ -97,13 +85,27 @@ export default function Slick({
   const settings = {
     // dots: true,
     infinite: inSeat ? false : true,
-    speed: 900,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     // arrows: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     afterChange: (current: number) => setCount(current),
+  };
+
+  const getBackgroundClass = (part: string) => {
+    const base =
+      "px-2 rounded-sm text-[12px] font-bold text-center content-center";
+    const colors: Record<string, string> = {
+      Planning: "bg-[#a47864]",
+      Design: "bg-[#fcad80]",
+      Publishing: "bg-[#bb2649]",
+      Frontend: "bg-[#6667ab]",
+      Backend: "bg-[#649a64]",
+    };
+
+    return `${colors[part] || ""} ${base}`.trim();
   };
 
   return (
@@ -129,18 +131,45 @@ export default function Slick({
                 </div>
               )}
               <div className="w-[700px] text-[white] px-[30px] text-left flex flex-col gap-[4px]">
+                <div className="flex justify-between">
+                  <div className="flex gap-[10px]">
+                    {i.part.map((part, partIdx) => {
+                      return (
+                        <div key={partIdx} className={getBackgroundClass(part)}>
+                          {part.toUpperCase()}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div>{i.period}</div>
+                </div>
+
                 <h4 className="text-[20px] font-bold">{i.title}</h4>
 
                 <div className="w-full h-full flex flex-col justify-between">
-                  <div className="text-[14px] break-words tracking-[0.6px]">
+                  <div className="text-[14px] text-[#eaeaea] break-words tracking-[0.6px]">
                     {i.intro}
                   </div>
-                  <button
-                    onClick={handleOpenDetail}
-                    className="bg-[#ffffff15] text-center py-[10px] rounded-[2px] hover:bg-[#ffffff40]"
-                  >
-                    DETAIL
-                  </button>
+
+                  <div className="flex w-full">
+                    {i.url && i.gitUrl && (
+                      <Link
+                        target="_blank"
+                        draggable={false}
+                        href={`${i.url || i.gitUrl}`}
+                        className="w-full bg-[#ffffff15] text-center py-[10px] rounded-l-[4px] hover:bg-[#ffffff40] transition-colors duration-[500ms] ease-in-out"
+                      >
+                        VISIT
+                      </Link>
+                    )}
+
+                    <button
+                      onClick={handleOpenDetail}
+                      className="w-full bg-[#ffffff15] text-center py-[10px] rounded-r-[4px] hover:bg-[#ffffff40] transition-colors duration-[500ms] ease-in-out"
+                    >
+                      DETAIL
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

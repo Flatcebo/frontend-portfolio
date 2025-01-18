@@ -1,5 +1,6 @@
 import type {Config} from "tailwindcss";
 const plugin = require("tailwindcss/plugin");
+import scrollbarHide from "tailwind-scrollbar-hide";
 
 const config: Config = {
   content: [
@@ -23,9 +24,15 @@ const config: Config = {
       animation: {
         "slide-up": "slideUp 0.5s linear forwards",
         "slide-down": "slideDown 0.5s linear forwards",
-        gradient: " gradient 3s ease-in-out infinite",
+        gradient: "gradient 3s ease-in-out infinite",
+        opacity: "opacity 0.5s linear forwards",
       },
       keyframes: {
+        opacity: {
+          "0%": {opacity: "0"},
+          "50%": {opacity: "0"},
+          "100%": {opacity: "1"},
+        },
         slideUp: {
           "0%": {transform: "translateY(10px)", opacity: "0"},
           "100%": {transform: "translateY(0px)", opacity: "1"},
@@ -63,6 +70,7 @@ const config: Config = {
     },
   },
   plugins: [
+    scrollbarHide,
     plugin(function ({addUtilities}: any) {
       addUtilities({
         ".clip-curve": {
@@ -71,5 +79,5 @@ const config: Config = {
       });
     }),
   ],
-};
+} satisfies Config;
 export default config;

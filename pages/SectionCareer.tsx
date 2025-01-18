@@ -11,12 +11,7 @@ export default function SectionCareer() {
     >
       <Header title="CAREER" />
 
-      <div className="relative w-full h-full flex justify-center items-center gap-[0px] pb-[120px]">
-        {/* <div className="flex items-start justify-start"> */}
-        {/* </div> */}
-        {/* <div className="relative left-4 top-0 bottom-0 w-[2px] h-full bg-[#244998]"></div> */}
-
-        {/* <span>개발자 : 3년</span> */}
+      <div className="relative w-full h-full flex justify-center items-center gap-[0px] pb-[48px]">
         <div className="relative w-[900px] py-0 flex flex-wrap justify-between gap-[40px] ">
           {career.map((career, index) => (
             <div

@@ -9,12 +9,12 @@ import WebView from "@/components/WebView";
 import Header from "@/components/Header";
 import Slick from "@/components/Slick";
 import DetailBox from "@/components/DetailBox";
-import {useRefresh} from "@/app/contexts/RefreshContext";
+import {useRefresh} from "@/contexts/RefreshContext";
 
 export default function SectionPortfolio() {
   const [data, setData] = useState<PfCategory[]>([]);
   const [selectedData, setSelectedData] = useState<PfCategory[]>([]);
-  const [dropdown, setDropdown] = useState<boolean>(false);
+  const [filterButton, setFilterButton] = useState<boolean>(false);
   const [detailBox, setDetailBox] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<SkillItem>({
     title: "ALL",
@@ -23,13 +23,11 @@ export default function SectionPortfolio() {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [selectedUrl, setSelectedUrl] = useState("");
 
-  const {handleRefresh} = useRefresh();
+  const {refresh, handleRefresh} = useRefresh();
 
   useEffect(() => {
-    // const select = data.filter((i, idx) => idx === 0);
-
-    setData(pfData as PfCategory[]);
-
+    const filtered = pfData.filter((item) => item.part.includes("Frontend"));
+    setData(filtered as PfCategory[]);
     // setSelectedData(select as any);
   }, []);
 
@@ -41,11 +39,19 @@ export default function SectionPortfolio() {
     setSelectedUrl(selectedUrl as any);
   }, [data, selectedIdx]);
 
-  // console.log(selectedData);
+  // useEffect(() => {
+  //   const title = selectedItem.title;
+  //   const filter = data.filter((i, idx) => i.frontStacks.includes(title));
 
-  const handleDropdown = () => {
-    setDropdown((any) => !any);
-  };
+  //   if (title !== "ALL") {
+  //     setData(filter);
+  //   }
+  //   // setData(filter);
+
+  //   console.log("filter =>", filter);
+  // }, [selectedItem]);
+
+  // console.log(selectedData);
 
   const handleClickPortfolio = (idx: number, url: string) => {
     setSelectedIdx(idx);
@@ -62,6 +68,19 @@ export default function SectionPortfolio() {
     setDetailBox(false);
   };
 
+  const handleClickFilterAll = () => {
+    setFilterButton(true);
+    setData(pfData as PfCategory[]);
+  };
+
+  const handleClickFilterFront = () => {
+    const filtered = pfData.filter((item) => item.part.includes("Frontend"));
+
+    setFilterButton(false);
+
+    setData(filtered as PfCategory[]);
+    // console.log(filteredFrameworks);
+  };
   // console.log(selectedUrl);
 
   return (
@@ -69,18 +88,11 @@ export default function SectionPortfolio() {
       id="portfolio"
       className="relative w-full h-screen z-[996] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
     >
-      {/* {dropdown && (
-        <button
-          onClick={handleDropdown}
-          className="absolute w-full h-screen z-[999]"
-        />
-      )} */}
-
       <Header title="PORTFOLIO" />
 
-      <div className="relative w-full h-full flex flex-col justify-start items-center gap-[0px]">
+      <div className="relative w-full h-full flex flex-col justify-start items-center gap-[0px] pt-[34px]">
         <div className="relative w-[1000px] h-auto">
-          <div className="w-full h-[563px] flex gap-[20px]">
+          <div className="w-full h-[563px] flex gap-[20px] transition-colors duration-[500ms] ease-in-out animate-opacity">
             <WebView url={selectedUrl} />
 
             <DetailBox
@@ -100,8 +112,8 @@ export default function SectionPortfolio() {
                     onClick={() => handleClickPortfolio(idx, i.url)}
                     className={`${
                       idx === selectedIdx &&
-                      "border-[1px] border-[#cacaca] rounded-[4px]"
-                    } px-[1px] `}
+                      "outline-[2px] outline-[#cacaca] outline rounded-[4px]"
+                    } px-[0px] `}
                   >
                     {i.imgUrl ? (
                       <Image
@@ -109,11 +121,12 @@ export default function SectionPortfolio() {
                         alt={i.title}
                         width={4000}
                         height={4000}
-                        className="w-[57px] h-[32px] rounded-[4px] object-fill hover:shadow-div"
+                        draggable={false}
+                        className="w-[57px] h-[32px] rounded-[4px] object-fill hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity"
                       />
                     ) : (
                       <div
-                        className={`w-[57px] h-[32px] rounded-[4px] content-center bg-[#ffffff15] hover:shadow-div`}
+                        className={`w-[57px] h-[32px] rounded-[4px] content-center bg-[#ffffff15] hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity`}
                       >
                         <p className="text-[8px] font-bold">😢</p>
                       </div>
@@ -125,22 +138,41 @@ export default function SectionPortfolio() {
             {/*  */}
 
             {/* Select */}
-            <button
+            <div className="bg-[#ffffff15] rounded-full">
+              <button
+                onClick={handleClickFilterAll}
+                className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
+                  filterButton && "bg-[#ffffff40]"
+                }`}
+              >
+                ALL
+              </button>
+
+              <button
+                onClick={handleClickFilterFront}
+                className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
+                  !filterButton && "bg-[#ffffff40]"
+                }`}
+              >
+                FRONT
+              </button>
+            </div>
+            {/* <button
               onClick={handleDropdown}
               className="flex items-center gap-[4px]"
             >
               <span className="text-[18px]">{selectedItem.title}</span>
 
               <IoIosArrowDown color="#fff" size={24} />
-            </button>
+            </button> */}
 
-            <Dropdown
+            {/* <Dropdown
               visible={dropdown}
               onClose={() => setDropdown(false)}
               setSelectedItem={(item) =>
                 setSelectedItem({title: item.title, imgUrl: item.imgUrl})
               }
-            />
+            /> */}
           </div>
           {/*  */}
 

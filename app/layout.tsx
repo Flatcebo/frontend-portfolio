@@ -8,7 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import {RefreshProvider} from "@/app/contexts/RefreshContext";
+import {RefreshProvider} from "@/contexts/RefreshContext";
 
 const inter = Inter({subsets: ["latin"]});
 const poppins = Poppins({subsets: ["latin"], weight: "400"});
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cabin.className}>
+      <body className={`${cabin.className} text-white`}>
         <RefreshProvider>
           <SmoothScroll>{children}</SmoothScroll>
         </RefreshProvider>

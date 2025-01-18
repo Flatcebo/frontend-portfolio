@@ -20,7 +20,6 @@ interface SkillProps {
 }
 
 type PfCategoryKey =
-  | "part"
   | "period"
   | "language"
   | "frontStacks"
@@ -33,7 +32,7 @@ interface PfCategory {
   title: string;
   intro: string;
   part: string[];
-  period: string[];
+  period: string;
   language: string[];
   frontStacks: string[];
   backStacks: string[];
@@ -41,12 +40,16 @@ interface PfCategory {
   url: string;
   gitUrl: string[];
   task: PfTask[];
-  desc: string[];
+  desc: string;
 }
 
 interface PfTask {
   front: string[];
   back: string[];
+}
+
+interface PfItem {
+  title: string;
 }
 
 declare const API_BASE_URL: string;

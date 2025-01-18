@@ -25,7 +25,7 @@ export default function SectionSkills() {
     >
       <Header title="SKILLS" />
 
-      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pb-[120px]">
+      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pb-[48px]">
         {/* <Bubble categories={categories} skillData={skillData} /> */}
 
         <div className="relative w-[900px] py-0 flex justify-center items-center gap-[0px]">

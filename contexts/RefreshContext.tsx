@@ -33,7 +33,13 @@ export function RefreshProvider({children}: {children: ReactNode}) {
 export function useRefresh() {
   const context = useContext(RefreshContext);
   if (!context) {
-    throw new Error("useRefresh must be used within a RefreshProvider");
+    console.warn(
+      "useRefresh: RefreshProvider가 설정되지 않았습니다. 기본값을 반환합니다."
+    );
+    return {
+      refresh: 0,
+      handleRefresh: () => {},
+    };
   }
   return context;
 }

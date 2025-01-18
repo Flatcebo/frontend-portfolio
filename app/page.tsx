@@ -13,8 +13,11 @@ import SectionCareer from "@/pages/SectionCareer";
 import SectionSkills from "@/pages/SectionSkills";
 import SectionPortfolio from "@/pages/SectionPortfolio";
 import SectionStudy from "@/pages/SectionStudy";
-import WebView from "@/components/WebView";
-import Header from "@/components/Header";
+// import dynamic from "next/dynamic";
+
+// const SectionPortfolio = dynamic(() => import("@/pages/SectionPortfolio"), {
+//   ssr: false,
+// });
 
 export default function Home() {
   const scrollPosition = useRef(0);
@@ -60,6 +63,12 @@ export default function Home() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
   }, []);
 
   // console.log(view);

@@ -1,6 +1,6 @@
 "use client";
 
-import {useRefresh} from "@/app/contexts/RefreshContext";
+import {useRefresh} from "@/contexts/RefreshContext";
 import {useMemo} from "react";
 
 interface WebViewProps {
@@ -16,7 +16,7 @@ export default function WebView({url}: WebViewProps) {
         <iframe
           key={refresh}
           src={url}
-          className="w-full h-full rounded-[10px]"
+          className="w-full h-full rounded-[10px] bg-[#fff] transition-opacity duration-[500ms] ease-in-out animate-opacity"
           allow="fullscreen"
         />
       );

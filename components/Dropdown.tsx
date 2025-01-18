@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import skillData from "@/public/data/skills.json";
+import pfData from "@/public/data/portfolio.json";
 import {useEffect, useState} from "react";
 
 interface DropdownProps {
   visible: boolean;
   onClose: () => void;
-  setSelectedItem: (title: SkillItem) => void;
+  setSelectedItem: (title: PfCategory) => void;
 }
 
 export default function Dropdown({
@@ -15,14 +15,15 @@ export default function Dropdown({
   onClose,
   setSelectedItem,
 }: DropdownProps) {
-  const [data, setData] = useState<SkillItem[]>([]);
+  const [data, setData] = useState<PfCategory[]>([]);
 
   useEffect(() => {
-    const filteredFrameworks = skillData[0].framework.filter((item) =>
-      ["NextJS", "ReactJS"].includes(item.title)
+    const filteredFrameworks = pfData.filter((item) =>
+      item.part.includes("Frontend")
     );
 
-    setData(filteredFrameworks);
+    // setData(filteredFrameworks);
+    // console.log(filteredFrameworks);
   }, [visible]);
 
   //   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Dropdown({
   //     };
   //   }, [visible, onClose]);
 
-  const handleChangeItem = (item: SkillItem) => {
+  const handleChangeItem = (item: PfCategory) => {
     // console.log(title);
     setSelectedItem(item);
     onClose();
@@ -50,12 +51,13 @@ export default function Dropdown({
   return visible ? (
     <div className="absolute top-[60px] right-0 w-[60px] h-[auto] flex flex-col items-center z-[98]">
       <button
-        onClick={() => handleChangeItem({title: "ALL", imgUrl: ""})}
-        className="w-[32px] h-[32px] flex justify-center items-center mb-[10px] text-[16px] text-center rounded-full border-[3px] z-[99]"
+        // onClick={() => handleChangeItem({title: "ALL", imgUrl: ""})}
+        className="w-[32px] h-[32px] bg-[black] flex justify-center items-center mb-[10px] text-[16px] text-center rounded-full border-[3px] z-[99]"
       >
         ALL
       </button>
-      {data.map((i, idx) => {
+
+      {/* {data.map((i, idx) => {
         return (
           <button
             key={idx}
@@ -72,7 +74,7 @@ export default function Dropdown({
             />
           </button>
         );
-      })}
+      })} */}
     </div>
   ) : null;
 }

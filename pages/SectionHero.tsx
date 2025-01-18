@@ -18,7 +18,7 @@ export default function SectionHero() {
           //   textShadow: `0 6px 8px #214083`,
           // }}
         >
-          Park DongSeok's Portfolio
+          Park DongSeok&apos;s Portfolio
         </h1>
       </div>
       {/* <div>반갑습니다.</div> */}
