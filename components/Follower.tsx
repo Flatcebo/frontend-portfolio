@@ -47,7 +47,7 @@ export default function Follower() {
   return (
     <div
       ref={elementRef}
-      className="absolute top-0 left-0 w-[40px] h-[40px] bg-none border-[2px] border-[#13264e] rounded-full pointer-events-none transition-transform duration-[100] ease-out z-[997]"
+      className="absolute top-0 left-0 w-[40px] h-[40px] bg-none border-[2px] border-[#244998] rounded-full pointer-events-none transition-transform duration-[100] ease-out z-[997]"
     />
   );
 }

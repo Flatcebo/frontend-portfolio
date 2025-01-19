@@ -1,5 +1,6 @@
 "use client";
 
+import {useThemeStore} from "@/stores/useThemeStore";
 import {useMemo} from "react";
 
 interface IBgProps {
@@ -7,6 +8,8 @@ interface IBgProps {
 }
 
 export default function Background({scrollAlert}: IBgProps) {
+  const {isDarkMode} = useThemeStore();
+
   const dots = useMemo(() => {
     return [...Array(80)].map(() => ({
       width: Math.random() * 2 + 1,
@@ -24,7 +27,10 @@ export default function Background({scrollAlert}: IBgProps) {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#000] via-[#000] to-[#13264eb3] flex items-center justify-center z-0">
+    <div
+      className={`fixed top-0 left-0 w-full h-screen bg-gradient-to-b to-[#13264eb3] flex items-center justify-center z-0
+                      ${isDarkMode ? "from-[#000] via-[#000]" : "from-[#fff]"}`}
+    >
       {/* Particles */}
       <div className="absolute w-full h-full z-0 pointer-events-none">
         {dots.map((dot, i) => (

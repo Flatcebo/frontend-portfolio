@@ -1,6 +1,9 @@
 "use client";
 
+import {useThemeStore} from "@/stores/useThemeStore";
+
 export default function SectionHero() {
+  const {isDarkMode} = useThemeStore();
   return (
     <section
       id="hero"
@@ -8,20 +11,21 @@ export default function SectionHero() {
                     leading-[90px] tracking-[0px]"
     >
       <div className="">
-        <p className="text-[#ddd] text-[60px] select-none text-left pl-[6px]">
+        <p
+          className={`text-[60px] select-none text-left pl-[6px]
+                        ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}`}
+        >
           Frontend Developer
         </p>
 
         <h1
-          className="text-[#ddd] text-[140px] font-bold mb-4 select-none text-left"
-          // style={{
-          //   textShadow: `0 6px 8px #214083`,
-          // }}
+          className={`text-[140px] font-bold mb-4 select-none text-left
+                        ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}`}
         >
-          Park DongSeok&apos;s Portfolio
+          Park DongSeok
         </h1>
       </div>
-      {/* <div>반갑습니다.</div> */}
     </section>
   );
 }
+// &apos;

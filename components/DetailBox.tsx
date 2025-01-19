@@ -1,5 +1,6 @@
 "use client";
 
+import {useThemeStore} from "@/stores/useThemeStore";
 import React, {useMemo} from "react";
 
 interface DetailBoxProps {
@@ -13,16 +14,7 @@ export default function DetailBox({
   data,
   handleCloseDetail,
 }: DetailBoxProps) {
-  // const categories: PfCategoryKey[] = [
-  //   "period",
-  //   "part",
-  //   "language",
-  //   "frontStacks",
-  //   "backStacks",
-  //   "url",
-  //   "gitUrl",
-  //   "desc",
-  // ];
+  const {isDarkMode} = useThemeStore();
 
   const content = useMemo(() => {
     return (
@@ -144,7 +136,10 @@ export default function DetailBox({
   }, [visible, data]);
 
   return visible ? (
-    <div className="relative w-[1500px] h-full bg-[#ffffff15] rounded-[10px] flex flex-col justify-between">
+    <div
+      className={`relative w-[1500px] h-full rounded-[10px] flex flex-col justify-between
+                      ${isDarkMode ? "bg-[#ffffff15]" : "bg-[#13264e4d]"}`}
+    >
       {content}
 
       {/* <button className="absolute bottom-[60px] left-[50%] translate-x-[-50%] bg-[#ffffff15] p-4 rounded-full z-[999]">
@@ -153,7 +148,12 @@ export default function DetailBox({
 
       <button
         onClick={handleCloseDetail}
-        className="bg-[#ffffff15] text-center py-[10px] rounded-b-[10px] hover:bg-[#ffffff40] transition-colors duration-[500ms] ease-in-out"
+        className={`text-center py-[10px] rounded-b-[10px] transition-colors duration-[500ms] ease-in-out
+                    ${
+                      isDarkMode
+                        ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
+                        : "bg-[#13264e30] hover:bg-[#13264e80]"
+                    }`}
       >
         CLOSE
       </button>

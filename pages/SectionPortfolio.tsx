@@ -10,8 +10,11 @@ import Header from "@/components/Header";
 import Slick from "@/components/Slick";
 import DetailBox from "@/components/DetailBox";
 import {useRefresh} from "@/contexts/RefreshContext";
+import {useThemeStore} from "@/stores/useThemeStore";
 
 export default function SectionPortfolio() {
+  const {isDarkMode} = useThemeStore();
+
   const [data, setData] = useState<PfCategory[]>([]);
   const [selectedData, setSelectedData] = useState<PfCategory[]>([]);
   const [filterButton, setFilterButton] = useState<boolean>(false);
@@ -23,12 +26,11 @@ export default function SectionPortfolio() {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [selectedUrl, setSelectedUrl] = useState("");
 
-  const {refresh, handleRefresh} = useRefresh();
+  const {handleRefresh} = useRefresh();
 
   useEffect(() => {
     const filtered = pfData.filter((item) => item.part.includes("Frontend"));
     setData(filtered as PfCategory[]);
-    // setSelectedData(select as any);
   }, []);
 
   useEffect(() => {
@@ -38,20 +40,6 @@ export default function SectionPortfolio() {
     setSelectedData(select as any);
     setSelectedUrl(selectedUrl as any);
   }, [data, selectedIdx]);
-
-  // useEffect(() => {
-  //   const title = selectedItem.title;
-  //   const filter = data.filter((i, idx) => i.frontStacks.includes(title));
-
-  //   if (title !== "ALL") {
-  //     setData(filter);
-  //   }
-  //   // setData(filter);
-
-  //   console.log("filter =>", filter);
-  // }, [selectedItem]);
-
-  // console.log(selectedData);
 
   const handleClickPortfolio = (idx: number, url: string) => {
     setSelectedIdx(idx);
@@ -79,7 +67,6 @@ export default function SectionPortfolio() {
     setFilterButton(false);
 
     setData(filtered as PfCategory[]);
-    // console.log(filteredFrameworks);
   };
   // console.log(selectedUrl);
 
@@ -126,7 +113,12 @@ export default function SectionPortfolio() {
                       />
                     ) : (
                       <div
-                        className={`w-[57px] h-[32px] rounded-[4px] content-center bg-[#ffffff15] hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity`}
+                        className={`w-[57px] h-[32px] rounded-[4px] content-center hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity
+                                      ${
+                                        isDarkMode
+                                          ? "bg-[#ffffff15]"
+                                          : "bg-[#13264e4d]"
+                                      }`}
                       >
                         <p className="text-[8px] font-bold">😢</p>
                       </div>
@@ -138,11 +130,22 @@ export default function SectionPortfolio() {
             {/*  */}
 
             {/* Select */}
-            <div className="bg-[#ffffff15] rounded-full">
+            <div
+              className={`rounded-full
+                              ${
+                                isDarkMode ? "bg-[#ffffff15]" : "bg-[#13264e60]"
+                              }`}
+            >
               <button
                 onClick={handleClickFilterAll}
                 className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
-                  filterButton && "bg-[#ffffff40]"
+                  isDarkMode
+                    ? filterButton
+                      ? "bg-[#ffffff40]"
+                      : ""
+                    : filterButton
+                    ? "bg-[#13264e90]"
+                    : ""
                 }`}
               >
                 ALL
@@ -151,12 +154,19 @@ export default function SectionPortfolio() {
               <button
                 onClick={handleClickFilterFront}
                 className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
-                  !filterButton && "bg-[#ffffff40]"
+                  isDarkMode
+                    ? !filterButton
+                      ? "bg-[#ffffff40]"
+                      : ""
+                    : !filterButton
+                    ? "bg-[#13264e90]"
+                    : ""
                 }`}
               >
                 FRONT
               </button>
             </div>
+
             {/* <button
               onClick={handleDropdown}
               className="flex items-center gap-[4px]"
@@ -180,7 +190,6 @@ export default function SectionPortfolio() {
             <Slick
               data={data}
               setCount={(count) => setSelectedIdx(count)}
-              // setSelectedUrl={(url) => setSelectedUrl(url)}
               selectedIdx={selectedIdx}
               handleOpenDetail={handleOpenDetail}
             />

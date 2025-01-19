@@ -8,6 +8,7 @@ import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {imgLoader} from "@/utils/imgLoader";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
 import Link from "next/link";
+import {useThemeStore} from "@/stores/useThemeStore";
 
 interface SlickProps {
   data: PfCategory[];
@@ -22,6 +23,8 @@ export default function Slick({
   selectedIdx,
   handleOpenDetail,
 }: SlickProps) {
+  const {isDarkMode} = useThemeStore();
+
   const [side, setSide] = useState(false);
   const [inSeat, setInSeat] = useState(false);
   const sliderRef = useRef<Slider>(null);
@@ -125,7 +128,12 @@ export default function Slick({
                 />
               ) : (
                 <div
-                  className={`w-[300px] h-[169px] rounded-[4px] content-center bg-[#ffffff15] shadow-div`}
+                  className={`w-[300px] h-[169px] rounded-[4px] content-center shadow-div
+                                ${
+                                  isDarkMode
+                                    ? "bg-[#ffffff15]"
+                                    : "bg-[#13264e4d]"
+                                }`}
                 >
                   <p className="text-[8px] font-bold">😢</p>
                 </div>
@@ -157,7 +165,12 @@ export default function Slick({
                         target="_blank"
                         draggable={false}
                         href={`${i.url || i.gitUrl}`}
-                        className="w-full bg-[#ffffff15] text-center py-[10px] rounded-l-[4px] hover:bg-[#ffffff40] transition-colors duration-[500ms] ease-in-out"
+                        className={`w-full text-center py-[10px] rounded-r-[6px] transition-colors duration-[500ms] ease-in-out
+                          ${
+                            isDarkMode
+                              ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
+                              : "bg-[#13264e60] hover:bg-[#13264e]"
+                          }`}
                       >
                         VISIT
                       </Link>
@@ -165,7 +178,12 @@ export default function Slick({
 
                     <button
                       onClick={handleOpenDetail}
-                      className="w-full bg-[#ffffff15] text-center py-[10px] rounded-r-[4px] hover:bg-[#ffffff40] transition-colors duration-[500ms] ease-in-out"
+                      className={`w-full text-center py-[10px] rounded-r-[6px] transition-colors duration-[500ms] ease-in-out
+                                    ${
+                                      isDarkMode
+                                        ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
+                                        : "bg-[#13264e60] hover:bg-[#13264e]"
+                                    }`}
                     >
                       DETAIL
                     </button>

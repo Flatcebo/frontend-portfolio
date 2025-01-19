@@ -6,8 +6,10 @@ import Image from "next/image";
 import Bubble from "@/components/Bubble";
 import {FaStar} from "react-icons/fa";
 import Header from "@/components/Header";
+import {useThemeStore} from "@/stores/useThemeStore";
 
 export default function SectionSkills() {
+  const {isDarkMode} = useThemeStore();
   const skillData: SkillCategory[] = skills;
 
   const categories: CategoryKey[] = [
@@ -28,12 +30,15 @@ export default function SectionSkills() {
       <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pb-[48px]">
         {/* <Bubble categories={categories} skillData={skillData} /> */}
 
-        <div className="relative w-[900px] py-0 flex justify-center items-center gap-[0px]">
+        <div className="relative w-[900px] py-0 flex justify-center items-center gap-[0px] ">
           {skillData.map((skill, index) => (
             <div key={index} className="ml-0 flex flex-col gap-[40px]">
               {categories.map((category) => (
                 <div key={category} className="flex justify-start items-center">
-                  <h4 className="text-[white] w-[80px] mr-[40px] text-center">
+                  <h4
+                    className={`w-[80px] mr-[40px] text-center
+                                  ${isDarkMode ? "" : "text-[#333]"}`}
+                  >
                     {category.toUpperCase()}
                   </h4>
 
@@ -64,7 +69,13 @@ export default function SectionSkills() {
                             />
                           </div>
 
-                          <span className="text-gray-500">{item.title}</span>
+                          <span
+                            className={`${
+                              isDarkMode ? "text-gray-500" : "text-[#fafafa]"
+                            }`}
+                          >
+                            {item.title}
+                          </span>
                         </div>
                       ))}
                   </div>
