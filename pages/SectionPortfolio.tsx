@@ -19,10 +19,6 @@ export default function SectionPortfolio() {
   const [selectedData, setSelectedData] = useState<PfCategory[]>([]);
   const [filterButton, setFilterButton] = useState<boolean>(false);
   const [detailBox, setDetailBox] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<SkillItem>({
-    title: "ALL",
-    imgUrl: "",
-  });
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [selectedUrl, setSelectedUrl] = useState("");
 
@@ -77,9 +73,16 @@ export default function SectionPortfolio() {
     >
       <Header title="PORTFOLIO" />
 
-      <div className="relative w-full h-full flex flex-col justify-start items-center gap-[0px] pt-[34px]">
-        <div className="relative w-[1000px] h-auto">
-          <div className="w-full h-[563px] flex gap-[20px] transition-colors duration-[500ms] ease-in-out animate-opacity">
+      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pt-[-59px]">
+        <div
+          className="relative h-auto
+                      lg:w-[1000px] xxs:w-[90%]"
+        >
+          <div
+            className="relative aspect-[16/9] w-full flex transition-colors duration-[500ms] ease-in-out animate-opacity
+                            exlg:flex-row xxs:flex-col
+                            exlg:gap-[20px] xxs:gap-[10px]"
+          >
             <WebView url={selectedUrl} />
 
             <DetailBox
@@ -89,9 +92,21 @@ export default function SectionPortfolio() {
             />
           </div>
 
-          <div className="relative w-full h-[60px] flex justify-between items-center text-left">
+          <div
+            className="relative w-full flex justify-between text-left
+                        lg:h-[60px] xxs:h-auto
+                        lg:flex-row xxs:flex-col-reverse
+                        lg:items-center xxs:items-start
+                        lg:my-[0px] xxs:my-[10px]
+                        lg:gap-[0px] xxs:gap-[10px]
+                        "
+          >
             {/* Panorama */}
-            <div className="flex justify-center items-center gap-[10px] ml-1">
+            <div
+              className="flex items-center gap-[10px] ml-1
+                          lg:justify-center xxs:justify-start
+                          lg:flex-nowrap xxs:flex-wrap"
+            >
               {data.map((i, idx) => {
                 return (
                   <button
@@ -131,37 +146,42 @@ export default function SectionPortfolio() {
 
             {/* Select */}
             <div
-              className={`rounded-full
+              className={`rounded-full w-full flex
                               ${
                                 isDarkMode ? "bg-[#ffffff15]" : "bg-[#13264e60]"
                               }`}
             >
               <button
                 onClick={handleClickFilterAll}
-                className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
-                  isDarkMode
-                    ? filterButton
-                      ? "bg-[#ffffff40]"
-                      : ""
-                    : filterButton
-                    ? "bg-[#13264e90]"
-                    : ""
-                }`}
+                className={`py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out
+                              lg:w-[80px] xxs:w-[100%]
+                              ${
+                                isDarkMode
+                                  ? filterButton
+                                    ? "bg-[#ffffff40]"
+                                    : ""
+                                  : filterButton
+                                  ? "bg-[#13264e90]"
+                                  : ""
+                              }
+                              `}
               >
                 ALL
               </button>
 
               <button
                 onClick={handleClickFilterFront}
-                className={`w-[80px] py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out ${
-                  isDarkMode
-                    ? !filterButton
-                      ? "bg-[#ffffff40]"
-                      : ""
-                    : !filterButton
-                    ? "bg-[#13264e90]"
-                    : ""
-                }`}
+                className={`py-[4px] text-center content-center rounded-full transition-colors duration-[500ms] ease-in-out
+                              lg:w-[80px] xxs:w-[100%]
+                              ${
+                                isDarkMode
+                                  ? !filterButton
+                                    ? "bg-[#ffffff40]"
+                                    : ""
+                                  : !filterButton
+                                  ? "bg-[#13264e90]"
+                                  : ""
+                              }`}
               >
                 FRONT
               </button>

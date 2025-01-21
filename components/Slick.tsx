@@ -112,23 +112,33 @@ export default function Slick({
   };
 
   return (
-    <div className="">
+    <div className="w-full">
       <Slider {...settings} className="" ref={sliderRef}>
         {data.map((i, idx) => {
           // console.log(i.url, idx);
           return (
-            <div key={idx} className="!flex mx-[6px] my-[4px]">
+            <div
+              key={idx}
+              className="w-full !flex my-[4px]
+                          lg:flex-row xxs:flex-col
+                          lg:mx-[6px] xxs:mx-[6px]
+                          lg: xxs:"
+            >
               {i.imgUrl ? (
                 <Image
                   src={i.imgUrl}
                   alt={i.title}
                   width={4000}
                   height={4000}
-                  className="w-[300px] h-[169px] rounded-[4px] object-fill shadow-div"
+                  className="rounded-[4px] object-fill shadow-div
+                              lg:w-[300px] xxs:w-[120px]
+                              lg:h-[169px] xxs:h-[80px]"
                 />
               ) : (
                 <div
-                  className={`w-[300px] h-[169px] rounded-[4px] content-center shadow-div
+                  className={`rounded-[4px] content-center shadow-div
+                                lg:w-[300px] xxs:w-[95%]
+                                lg:h-[169px] xxs:h-[80px]
                                 ${
                                   isDarkMode
                                     ? "bg-[#ffffff15]"
@@ -138,8 +148,13 @@ export default function Slick({
                   <p className="text-[8px] font-bold">😢</p>
                 </div>
               )}
-              <div className="w-[700px] text-[white] px-[30px] text-left flex flex-col gap-[4px]">
-                <div className="flex justify-between">
+              <div
+                className="text-[white] text-left flex flex-col gap-[4px]
+                                lg:w-[700px] xxs:w-[95%]
+                                lg:h-auto xxs:h-auto
+                                lg:px-[30px] xxs:px-[0px]"
+              >
+                {/* <div className="flex justify-between">
                   <div className="flex gap-[10px]">
                     {i.part.map((part, partIdx) => {
                       return (
@@ -150,7 +165,7 @@ export default function Slick({
                     })}
                   </div>
                   <div>{i.period}</div>
-                </div>
+                </div> */}
 
                 <h4 className="text-[20px] font-bold">{i.title}</h4>
 

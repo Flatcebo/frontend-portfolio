@@ -18,7 +18,10 @@ export default function DetailBox({
 
   const content = useMemo(() => {
     return (
-      <div className="p-[24px] text-left w-full overflow-y-auto transition-colors duration-[500ms] ease-in-out animate-opacity">
+      <div
+        className="text-left w-full overflow-y-auto transition-colors duration-[500ms] ease-in-out animate-opacity
+                        exlg:p-[24px] xxs:p-[16px]"
+      >
         {data &&
           data.map((i, idx) => {
             return (
@@ -137,14 +140,17 @@ export default function DetailBox({
 
   return visible ? (
     <div
-      className={`relative w-[1500px] h-full rounded-[10px] flex flex-col justify-between
-                      ${isDarkMode ? "bg-[#ffffff15]" : "bg-[#13264e4d]"}`}
+      className={` rounded-[10px] flex flex-col justify-between z-[999]
+                    exlg:relative xxs:absolute
+                    exlg:w-[1500px] xxs:w-full
+                    exlg:h-full xxs:h-full
+                      ${
+                        isDarkMode
+                          ? "exlg:bg-[#ffffff15] xxs:bg-[#000000b0]"
+                          : "exlg:bg-[#13264e4d] xxs:bg-[#000000b0]"
+                      }`}
     >
       {content}
-
-      {/* <button className="absolute bottom-[60px] left-[50%] translate-x-[-50%] bg-[#ffffff15] p-4 rounded-full z-[999]">
-        more
-      </button> */}
 
       <button
         onClick={handleCloseDetail}
@@ -152,58 +158,11 @@ export default function DetailBox({
                     ${
                       isDarkMode
                         ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
-                        : "bg-[#13264e30] hover:bg-[#13264e80]"
+                        : "bg-[#ffffff15] hover:bg-[#ffffff40]"
                     }`}
       >
         CLOSE
       </button>
     </div>
   ) : null;
-}
-
-{
-  /* <div className="p-4 text-left w-full">
-{data &&
-  data.map((i, idx) => {
-    return (
-      <article className="w-full" key={idx}>
-        {categories.map((cat, cateIdx) => {
-          const value = i[cat];
-
-          return (
-            <div className="w-full break-words" key={cateIdx}>
-              <h4 className="text-[18px] font-bold">{cat}</h4>
-
- 
-              {Array.isArray(value) ? (
-                <ul className="pl-[6px] w-full flex">
-                  {value.map((s, sIdx) => (
-                    <li key={sIdx} className="text-left">
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              ) : value && typeof value === "object" ? (
-                // 객체인 경우
-                <ul className="pl-[6px] w-full">
-                  {Object.entries(value).map(
-                    ([key, val]: any, objIdx) => (
-                      <li key={objIdx} className="text-left">
-                        <strong>{key}: </strong>
-                        {Array.isArray(val) ? val.join(", ") : val}
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
-                // 문자열이나 다른 타입 처리
-                <p>{value || "N/A"}</p>
-              )}
-            </div>
-          );
-        })}
-      </article>
-    );
-  })}
-</div> */
 }

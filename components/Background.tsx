@@ -51,7 +51,7 @@ export default function Background({scrollAlert}: IBgProps) {
       </div>
 
       <div
-        className={`absolute w-full bottom-[0px] left-[20px] text-[#e5e5e5] font-bold text-center select-none ${
+        className={`absolute w-full bottom-[0px] left-[0px] text-[#e5e5e5] font-bold text-center select-none ${
           !scrollAlert ? "animate-slide-up" : "animate-slide-down"
         } `}
       >

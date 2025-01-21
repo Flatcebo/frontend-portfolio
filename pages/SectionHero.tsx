@@ -7,20 +7,32 @@ export default function SectionHero() {
   return (
     <section
       id="hero"
-      className="relative w-full h-screen flex flex-col justify-start items-start z-[996] p-10 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up
-                    leading-[90px] tracking-[0px]"
+      className="relative w-full h-screen flex flex-col z-[996]
+                  rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out 
+                  animate-slide-up tracking-[0px]
+                    exlg:justify-start xxs:justify-center
+                    exlg:items-start xxs:items-center
+                    exlg:p-10 xxs:p-4
+                    exlg:pt-10 xxs:pt-8
+                    exlg:leading-[90px] xxs:leading-none"
     >
       <div className="">
         <p
-          className={`text-[60px] select-none text-left pl-[6px]
-                        ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}`}
+          className={`select-none
+                      exlg:text-[60px] xxs:text-[20px]
+                      exlg:text-left xxs:text-center
+                      exlg:pl-[6px] xxs:pl-[0px]
+                      ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}
+                      `}
         >
           Frontend Developer
         </p>
 
         <h1
-          className={`text-[140px] font-bold mb-4 select-none text-left
-                        ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}`}
+          className={`font-bold mb-4 select-none text-left
+                      exlg:text-[140px] xxs:text-[48px]
+                      exlg:mt-0 xxs:mt-2
+                      ${isDarkMode ? "text-[#ddd]" : "text-[#244998]"}`}
         >
           Park DongSeok
         </h1>

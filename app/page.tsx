@@ -13,6 +13,7 @@ import SectionSkills from "@/pages/SectionSkills";
 import SectionPortfolio from "@/pages/SectionPortfolio";
 import SectionContact from "@/pages/SectionContact";
 import SectionAbout from "@/pages/SectionAbout";
+import {useDeviceStore} from "@/stores/useDeviceStore";
 
 export default function Home() {
   const scrollPosition = useRef(0);
@@ -65,6 +66,22 @@ export default function Home() {
     });
   }, []);
 
+  const updateDeviceState = useDeviceStore((state) => state.updateDeviceState);
+
+  useEffect(() => {
+    const handleResize = () => {
+      updateDeviceState(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [updateDeviceState]);
+
   // console.log(view);
 
   return (
@@ -79,17 +96,15 @@ export default function Home() {
 
       <SideNav view={view} />
 
-      <SectionHero />
+      {/* <SectionHero /> */}
 
-      {/* <SectionAbout /> */}
+      {/* <SectionCareer /> */}
 
-      <SectionCareer />
-
-      <SectionSkills />
+      {/* <SectionSkills /> */}
 
       <SectionPortfolio />
 
-      <SectionContact />
+      {/* <SectionContact /> */}
     </div>
   );
 }

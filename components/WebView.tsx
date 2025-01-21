@@ -18,7 +18,12 @@ export default function WebView({url}: WebViewProps) {
         <iframe
           key={refresh}
           src={url}
-          className="w-full h-full rounded-[10px] bg-[#fff] transition-opacity duration-[500ms] ease-in-out animate-opacity"
+          className={`rounded-[10px] transition-opacity duration-[500ms] ease-in-out animate-opacity
+                        xs:w-full xxs:w-[1280px]
+                        xs:h-full xxs:h-[720px]
+                        xs:scale-0 xxs:scale-[0.25]
+                        xs:transform-none xxs:origin-top-left
+                        ${isDarkMode ? "bg-[#fff]" : "bg-[#fff]"}`}
           allow="fullscreen"
         />
       );
@@ -34,5 +39,7 @@ export default function WebView({url}: WebViewProps) {
     }
   }, [url, refresh, isDarkMode]);
 
-  return <div className="w-full h-full z-[999] p-0">{content}</div>;
+  return (
+    <div className="w-full h-full z-[999] p-0 overflow-hidden">{content}</div>
+  );
 }
