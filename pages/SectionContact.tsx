@@ -9,14 +9,33 @@ export default function SectionContact() {
 
   const handleCopyToClipboard = () => {
     const email = "organicsic@naver.com";
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
+
+    if (
+      navigator.clipboard &&
+      typeof navigator.clipboard.writeText === "function"
+    ) {
+      navigator.clipboard
+        .writeText(email)
+        .then(() => {
+          alert("클립보드에 복사되었습니다.");
+        })
+        .catch((error) => {
+          console.error("Failed to copy: ", error);
+        });
+    } else {
+      // Fallback for unsupported environments
+      const textarea = document.createElement("textarea");
+      textarea.value = email;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
         alert("클립보드에 복사되었습니다.");
-      })
-      .catch((error) => {
-        console.error("Failed to copy: ", error);
-      });
+      } catch (error) {
+        console.error("Fallback failed to copy: ", error);
+      }
+      document.body.removeChild(textarea);
+    }
   };
 
   return (
@@ -25,10 +44,12 @@ export default function SectionContact() {
       className="relative w-full h-screen z-[996] p-0 rounded-2xl text-center transition-opacity duration-[1000ms] ease-in-out animate-slide-up"
     >
       <Header title="CONTACT" />
-      <div className="relative w-full h-full flex justify-center items-center gap-[0px] ">
+
+      <div className="relative w-full h-full flex justify-center items-center gap-[0px] mt-[-59px]">
         <div className="flex flex-col gap-[40px]">
           <div
-            className={`text-[48px]
+            className={`
+                          exlg:text-[48px] xxs:text-[24px]
                             ${isDarkMode ? "" : "text-[#244998]"} `}
           >
             고생 많으셨습니다.

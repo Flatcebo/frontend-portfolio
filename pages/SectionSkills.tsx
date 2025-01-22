@@ -27,7 +27,7 @@ export default function SectionSkills() {
     >
       <Header title="SKILLS" />
 
-      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pt-[-59px]">
+      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] mt-[-59px]">
         {/* <Bubble categories={categories} skillData={skillData} /> */}
 
         <div
@@ -90,13 +90,15 @@ export default function SectionSkills() {
                             />
                           </div>
 
-                          {/* <span
-                            className={` ${
-                              isDarkMode ? "text-gray-500" : "text-[#fafafa]"
-                            }`}
+                          <span
+                            className={`
+                                          exlg:flex xxs:hidden
+                               ${
+                                 isDarkMode ? "text-gray-500" : "text-[#fafafa]"
+                               }`}
                           >
                             {item.title}
-                          </span> */}
+                          </span>
                         </div>
                       ))}
                   </div>

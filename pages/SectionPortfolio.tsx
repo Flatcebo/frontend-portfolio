@@ -73,7 +73,7 @@ export default function SectionPortfolio() {
     >
       <Header title="PORTFOLIO" />
 
-      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] pt-[-59px]">
+      <div className="relative w-full h-full flex flex-col justify-center items-center gap-[0px] mt-[-59px]">
         <div
           className="relative h-auto
                       lg:w-[1000px] xxs:w-[90%]"
@@ -103,29 +103,37 @@ export default function SectionPortfolio() {
           >
             {/* Panorama */}
             <div
-              className="flex items-center gap-[10px] ml-1
-                          lg:justify-center xxs:justify-start
-                          lg:flex-nowrap xxs:flex-wrap"
+              className="flex items-center ml-1 overflow-x-scroll scrollbar-hide
+                          lg:justify-start xxs:justify-start
+                          lg:flex-none xxs:flex-none
+                          lg:w-[80%] xxs:w-full
+                          lg:gap-[10px] xxs:gap-[4px]
+                          lg:p-[4px] xxs:p-[4px]
+                          "
             >
               {data.map((i, idx) => {
                 return (
                   <button
                     key={idx}
                     onClick={() => handleClickPortfolio(idx, i.url)}
-                    className={`${
-                      idx === selectedIdx &&
-                      "outline-[2px] outline-[#cacaca] outline rounded-[4px]"
-                    } px-[0px] `}
+                    className={`px-[0px]
+                      ${
+                        idx === selectedIdx &&
+                        "outline-[2px] outline-[#cacaca] outline rounded-[4px]"
+                      }
+                      `}
                   >
                     {i.imgUrl ? (
-                      <Image
-                        src={i.imgUrl}
-                        alt={i.title}
-                        width={4000}
-                        height={4000}
-                        draggable={false}
-                        className="w-[57px] h-[32px] rounded-[4px] object-fill hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity"
-                      />
+                      <div className="w-[57px] h-[32px]">
+                        <Image
+                          src={i.imgUrl}
+                          alt={i.title}
+                          width={4000}
+                          height={4000}
+                          draggable={false}
+                          className="w-[57px] h-[32px] rounded-[4px] object-fill hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity"
+                        />
+                      </div>
                     ) : (
                       <div
                         className={`w-[57px] h-[32px] rounded-[4px] content-center hover:shadow-div transition-all duration-[500ms] ease-in-out animate-opacity
@@ -146,7 +154,8 @@ export default function SectionPortfolio() {
 
             {/* Select */}
             <div
-              className={`rounded-full w-full flex
+              className={`rounded-full flex
+                            lg:w-[160px] xxs:w-full
                               ${
                                 isDarkMode ? "bg-[#ffffff15]" : "bg-[#13264e60]"
                               }`}

@@ -9,6 +9,7 @@ import {imgLoader} from "@/utils/imgLoader";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
 import Link from "next/link";
 import {useThemeStore} from "@/stores/useThemeStore";
+import SlickBottomButton from "@/components/SlickBottomButton";
 
 interface SlickProps {
   data: PfCategory[];
@@ -51,10 +52,9 @@ export default function Slick({
         style={{
           ...style,
           display: "block",
-          background: side && "#333333bc",
           width: side ? 40 : 48,
           height: side ? 40 : 48,
-          left: side ? 16 : -120,
+          left: side ? 0 : -60,
           zIndex: 3,
           borderRadius: 6,
         }}
@@ -72,10 +72,9 @@ export default function Slick({
         style={{
           ...style,
           display: "block",
-          background: side && "#333333bc",
           width: side ? 40 : 48,
           height: side ? 40 : 48,
-          right: side ? 16 : -120,
+          right: side ? 0 : -60,
           zIndex: 3,
           borderRadius: 6,
         }}
@@ -99,7 +98,7 @@ export default function Slick({
 
   const getBackgroundClass = (part: string) => {
     const base =
-      "px-2 rounded-sm text-[12px] font-bold text-center content-center";
+      "rounded-sm font-bold text-center content-center lg:text-[12px] xxs:text-[4px] lg:w-auto xxs:w-[30px] lg:h-auto xxs:h-[10px] lg:px-2 xxs:px-0";
     const colors: Record<string, string> = {
       Planning: "bg-[#a47864]",
       Design: "bg-[#fcad80]",
@@ -119,91 +118,102 @@ export default function Slick({
           return (
             <div
               key={idx}
-              className="w-full !flex my-[4px]
+              className="w-full !flex my-[4px] gap-[10px]
                           lg:flex-row xxs:flex-col
-                          lg:mx-[6px] xxs:mx-[6px]
-                          lg: xxs:"
+                          lg:mx-[6px] xxs:mx-[0px]
+                          lg:px-[0px] xxs:px-[6px]"
             >
-              {i.imgUrl ? (
-                <Image
-                  src={i.imgUrl}
-                  alt={i.title}
-                  width={4000}
-                  height={4000}
-                  className="rounded-[4px] object-fill shadow-div
+              <div
+                className="flex
+                                lg:gap-[0px] xxs:gap-[10px]"
+              >
+                {i.imgUrl ? (
+                  <div className="flex flex-col items-center gap-[4px]">
+                    <Image
+                      src={i.imgUrl}
+                      alt={i.title}
+                      width={4000}
+                      height={4000}
+                      className="rounded-[4px] object-fill shadow-div
                               lg:w-[300px] xxs:w-[120px]
-                              lg:h-[169px] xxs:h-[80px]"
-                />
-              ) : (
-                <div
-                  className={`rounded-[4px] content-center shadow-div
-                                lg:w-[300px] xxs:w-[95%]
-                                lg:h-[169px] xxs:h-[80px]
+                              lg:h-[169px] xxs:h-[68px]"
+                    />
+                    <div className="text-[12px] text-center lg:hidden xxs:flex">
+                      {i.period}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-[4px]">
+                    <div
+                      className={`rounded-[4px] content-center shadow-div
+                                lg:w-[300px] xxs:w-[120px]
+                                lg:h-[169px] xxs:h-[68px]
                                 ${
                                   isDarkMode
                                     ? "bg-[#ffffff15]"
                                     : "bg-[#13264e4d]"
                                 }`}
-                >
-                  <p className="text-[8px] font-bold">😢</p>
-                </div>
-              )}
-              <div
-                className="text-[white] text-left flex flex-col gap-[4px]
-                                lg:w-[700px] xxs:w-[95%]
+                    >
+                      <p className="text-[8px] font-bold">😢</p>
+                    </div>
+                    <div className="text-[12px] text-center lg:hidden xxs:flex">
+                      {i.period}
+                    </div>
+                  </div>
+                )}
+                <div
+                  className="text-[white] text-left flex flex-col gap-[4px] bg-[]
+                                lg:w-[700px] xxs:w-[60%]
                                 lg:h-auto xxs:h-auto
                                 lg:px-[30px] xxs:px-[0px]"
-              >
-                {/* <div className="flex justify-between">
-                  <div className="flex gap-[10px]">
-                    {i.part.map((part, partIdx) => {
-                      return (
-                        <div key={partIdx} className={getBackgroundClass(part)}>
-                          {part.toUpperCase()}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div>{i.period}</div>
-                </div> */}
-
-                <h4 className="text-[20px] font-bold">{i.title}</h4>
-
-                <div className="w-full h-full flex flex-col justify-between">
-                  <div className="text-[14px] text-[#eaeaea] break-words tracking-[0.6px]">
-                    {i.intro}
-                  </div>
-
-                  <div className="flex w-full">
-                    {i.url && i.gitUrl && (
-                      <Link
-                        target="_blank"
-                        draggable={false}
-                        href={`${i.url || i.gitUrl}`}
-                        className={`w-full text-center py-[10px] rounded-r-[6px] transition-colors duration-[500ms] ease-in-out
-                          ${
-                            isDarkMode
-                              ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
-                              : "bg-[#13264e60] hover:bg-[#13264e]"
-                          }`}
-                      >
-                        VISIT
-                      </Link>
-                    )}
-
-                    <button
-                      onClick={handleOpenDetail}
-                      className={`w-full text-center py-[10px] rounded-r-[6px] transition-colors duration-[500ms] ease-in-out
-                                    ${
-                                      isDarkMode
-                                        ? "bg-[#ffffff15] hover:bg-[#ffffff40]"
-                                        : "bg-[#13264e60] hover:bg-[#13264e]"
-                                    }`}
+                >
+                  <div className="flex justify-between">
+                    <div
+                      className="flex
+                                      lg:gap-[10px] xxs:gap-[4px]"
                     >
-                      DETAIL
-                    </button>
+                      {i.part.map((part, partIdx) => {
+                        return (
+                          <div
+                            key={partIdx}
+                            className={`${getBackgroundClass(part)} `}
+                          >
+                            {part.toUpperCase()}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="lg:flex xxs:hidden">{i.period}</div>
+                  </div>
+
+                  <h4
+                    className="font-bold
+                                lg:text-[20px] xxs:text-[14px]"
+                  >
+                    {i.title}
+                  </h4>
+
+                  <div className="w-full h-full flex flex-col justify-between">
+                    <div
+                      className="text-[#eaeaea] break-words
+                                    lg:text-[14px] xxs:text-[10px]
+                                    lg:tracking-[0.6px] xxs:tracking-[0px]"
+                    >
+                      {i.intro}
+                    </div>
+
+                    <div className="lg:flex xxs:hidden">
+                      <SlickBottomButton
+                        i={i}
+                        handleOpenDetail={handleOpenDetail}
+                      />
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="lg:hidden xxs:flex">
+                <SlickBottomButton i={i} handleOpenDetail={handleOpenDetail} />
               </div>
             </div>
           );

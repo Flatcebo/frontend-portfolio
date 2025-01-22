@@ -3,7 +3,6 @@
 import Background from "@/components/Background";
 import FlowBar from "@/components/FlowBar";
 import Follower from "@/components/Follower";
-import ParallaxSection from "@/components/ParallaxSection";
 import SectionHero from "@/pages/SectionHero";
 import SideNav from "@/components/SideNav";
 import ThemeButton from "@/components/ThemeButton";
@@ -12,7 +11,6 @@ import SectionCareer from "@/pages/SectionCareer";
 import SectionSkills from "@/pages/SectionSkills";
 import SectionPortfolio from "@/pages/SectionPortfolio";
 import SectionContact from "@/pages/SectionContact";
-import SectionAbout from "@/pages/SectionAbout";
 import {useDeviceStore} from "@/stores/useDeviceStore";
 
 export default function Home() {
@@ -96,15 +94,15 @@ export default function Home() {
 
       <SideNav view={view} />
 
-      {/* <SectionHero /> */}
+      <SectionHero />
 
-      {/* <SectionCareer /> */}
+      <SectionCareer />
 
-      {/* <SectionSkills /> */}
+      <SectionSkills />
 
       <SectionPortfolio />
 
-      {/* <SectionContact /> */}
+      <SectionContact />
     </div>
   );
 }

@@ -16,7 +16,8 @@ export default function Header({title}: HeaderProps) {
                       ${isDarkMode ? "bg-[#ffffff2e]" : "bg-[#]"}`}
     >
       <h2
-        className={`text-[32px] font-bold text-center
+        className={`font-bold text-center
+                      lg:text-[32px] xxs:text-[24px]
                       ${isDarkMode ? "text-[#fff]" : "text-[#244998]"}`}
       >
         {title}
