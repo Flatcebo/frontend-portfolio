@@ -239,7 +239,7 @@
     "backStacks": [],
     "imgUrl": "/images/portfolio/kcredit.png",
     "gitUrl": [""],
-    "url": "http://192.168.200.127:8000/kcredit",
+    "url": "http://flatcebo.myftp.org:8000/kcredit",
     "task": [
       {
         "front": [],
@@ -258,7 +258,7 @@
     "backStacks": [],
     "imgUrl": "/images/portfolio/law.png",
     "gitUrl": [""],
-    "url": "http://192.168.200.127:8000/suseong",
+    "url": "http://flatcebo.myftp.org:8000/suseong",
     "task": [
       {
         "front": [],
@@ -277,7 +277,7 @@
     "backStacks": [],
     "imgUrl": "/images/portfolio/coin.png",
     "gitUrl": [""],
-    "url": "http://192.168.200.127:8000/coin",
+    "url": "http://flatcebo.myftp.org:8000/coin",
     "task": [
       {
         "front": [],
@@ -296,7 +296,7 @@
     "backStacks": [],
     "imgUrl": "/images/portfolio/mind.png",
     "gitUrl": [""],
-    "url": "http://192.168.200.127:8000/mind",
+    "url": "http://flatcebo.myftp.org:8000/mind",
     "task": [
       {
         "front": [],

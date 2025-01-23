@@ -30,6 +30,7 @@ const config: Config = {
         full: "0 0px 20px 2px rgba(0, 0, 0, 0.2)",
         div: "0 0px 4px 1px #ffffff",
         mode: "0px 0px 20px 4px #244998",
+        horizon: "4px 4px 4px 2px #ffffff",
       },
       animation: {
         "slide-up": "slideUp 0.5s linear forwards",

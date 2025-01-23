@@ -13,7 +13,7 @@ export default function WebView({url}: WebViewProps) {
   const {isDarkMode} = useThemeStore();
 
   const content = useMemo(() => {
-    if (url) {
+    if (url && url.startsWith("https://")) {
       return (
         <iframe
           key={refresh}
