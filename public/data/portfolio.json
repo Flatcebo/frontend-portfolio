@@ -1,5 +1,30 @@
 [
   {
+    "title": ["AGUCCIM(쇼핑몰)"],
+    "intro": ["브랜드 의류, 악세서리를 판매하는 쇼핑몰 페이지입니다."],
+    "part": ["Planning", "Design", "Publishing", "Frontend", "Backend"],
+    "period": "2025.01 ~ 2025.02",
+    "language": ["typescript"],
+    "frontStacks": ["NextJS", "Tailwind CSS", "Zustand"],
+    "backStacks": ["NextJS", "Prisma", "PostgreSQL"],
+    "imgUrl": "/images/portfolio/aguccim.png",
+    "gitUrl": ["https://github.com/Flatcebo/port_aguccim"],
+    "url": "https://aguccim.shop",
+    "task": [
+      {
+        "front": [
+          "모든 페이지의 디자인과 퍼블리싱을 진행",
+          "회원가입/로그인 기능 구현",
+          "상품 관련 페이지 등 SEO에 중요한 페이지들은 SSR or ISR 처리",
+          "유저 정보를 전역적으로 사용하기 위해 Zustand를 사용해서 데이터 담고, 쿠키 저장",
+          "미들웨어를 통해 로그인이 필요한 페이지 처리 및 리다이렉트"
+        ],
+        "back": ["Prisma Setting", "Prisma Data Modeling", "프로젝트 CRUD 구현"]
+      }
+    ],
+    "desc": ""
+  },
+  {
     "title": ["PMS(Project Management System)"],
     "intro": ["사내 프로젝트를 관리하는 서비스입니다."],
     "part": ["Design", "Publishing", "Frontend", "Backend"],
