@@ -1,0 +1,104 @@
+[
+  {
+    "language": [
+      {
+        "title": "Typescript",
+        "imgUrl": "/images/skills/typescript_rounded.webp",
+        "star": true
+      },
+      {
+        "title": "Javascript",
+        "imgUrl": "/images/skills/javascript_rounded.webp",
+        "star": true
+      }
+    ],
+    "framework": [
+      {
+        "title": "NextJS",
+        "imgUrl": "/images/skills/nextjs_rounded.svg",
+        "star": true
+      },
+      {
+        "title": "ReactJS",
+        "imgUrl": "/images/skills/react_rounded.webp",
+        "star": true
+      },
+      {
+        "title": "NodeJS",
+        "imgUrl": "/images/skills/node_rounded.webp",
+        "star": false
+      },
+      {
+        "title": "ExpressJS",
+        "imgUrl": "/images/skills/express.png",
+        "star": false
+      },
+      {
+        "title": "React-Native",
+        "imgUrl": "/images/skills/react_native_rounded.webp",
+        "star": true
+      }
+    ],
+    "markUp": [
+      {
+        "title": "HTML5",
+        "imgUrl": "/images/skills/html5_rounded.webp",
+        "star": false
+      },
+      {
+        "title": "CSS3",
+        "imgUrl": "/images/skills/css3_rounded.webp",
+        "star": false
+      },
+      {
+        "title": "SASS",
+        "imgUrl": "/images/skills/sass.png",
+        "star": false
+      },
+      {
+        "title": "Tailwind CSS",
+        "imgUrl": "/images/skills/tailwindcss_rounded.webp",
+        "star": true
+      },
+      {
+        "title": "Styled-Components",
+        "imgUrl": "/images/skills/styled-components.png",
+        "star": false
+      }
+    ],
+    "database": [
+      {
+        "title": "Prisma",
+        "imgUrl": "/images/skills/prisma.png",
+        "star": true
+      },
+      {
+        "title": "MySQL",
+        "imgUrl": "/images/skills/mysql_rounded.webp",
+        "star": false
+      },
+      {
+        "title": "PostgreSQL",
+        "imgUrl": "/images/skills/postgresql_rounded.webp",
+        "star": true
+      },
+      {
+        "title": "MariaDB",
+        "imgUrl": "/images/skills/mariadb.png",
+        "star": false
+      }
+    ],
+    "tool": [
+      {
+        "title": "Github",
+        "imgUrl": "/images/skills/github.png",
+        "star": true
+      },
+      {
+        "title": "Figma",
+        "imgUrl": "/images/skills/figma.avif",
+        "star": true
+      }
+    ]
+  }
+]
